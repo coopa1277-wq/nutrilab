@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NutriLab — Health Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F3EE;--card:#FFFFFF;--ink:#1C1916;--ink-2:#504A43;--ink-3:#9B9489;
+  --gold:#B8924A;--gold-lt:#F5ECD9;--sage:#527A58;--sage-lt:#E6EFE7;
+  --rust:#B84A3A;--rust-lt:#FAEAE8;--sky:#3D6B8C;--sky-lt:#E4EDF5;
+  --border:#E2DDD6;--r:13px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:16px;line-height:1.6}
+.wrap{max-width:700px;margin:0 auto;padding:2rem 1.25rem 6rem}
+
+.hdr{text-align:center;padding:2.5rem 0 2rem}
+.brand{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:500;letter-spacing:-.01em}
+.brand em{color:var(--gold);font-style:normal}
+.sub{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:.3rem}
+
+.prog{margin-bottom:2.5rem}
+.prog-row{display:flex;justify-content:space-between;font-size:.8125rem;color:var(--ink-3);margin-bottom:.45rem}
+.prog-track{height:2px;background:var(--border);border-radius:99px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--sage));border-radius:99px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2.25rem 2.5rem;box-shadow:0 2px 20px rgba(28,25,22,.07);animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:560px){.card{padding:1.5rem 1.25rem}}
+
+.q-eyebrow{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.q-eyebrow::before{content:'';width:18px;height:1px;background:var(--gold)}
+.q-title{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:500;line-height:1.3;margin-bottom:.5rem}
+.q-body{font-size:.9375rem;color:var(--ink-2);margin-bottom:1.5rem;line-height:1.55}
+
+.opts{display:flex;flex-direction:column;gap:.5rem}
+.opts.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+@media(max-width:520px){.opts.grid2{grid-template-columns:1fr}}
+
+.opt{display:flex;align-items:flex-start;gap:.875rem;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .16s ease;background:var(--bg);user-select:none}
+.opt:hover{border-color:var(--gold);background:var(--gold-lt)}
+.opt.sel{border-color:var(--sage);background:var(--sage-lt)}
+.opt.sel .chk{background:var(--sage);border-color:var(--sage)}
+.opt.sel .chk svg{display:block}
+.opt.warn-opt:hover{border-color:var(--rust);background:var(--rust-lt)}
+.opt.warn-opt.sel{border-color:var(--rust);background:var(--rust-lt)}
+.opt.warn-opt.sel .chk{background:var(--rust);border-color:var(--rust)}
+.opt.radio-style .chk{border-radius:50%}
+
+.chk{width:19px;height:19px;min-width:19px;border:1.5px solid var(--border);border-radius:4px;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.chk svg{display:none;width:11px;height:11px}
+.ol{font-size:.9375rem;font-weight:400;line-height:1.4;flex:1}
+.od{font-size:.8125rem;color:var(--ink-3);margin-top:.15rem;line-height:1.4}
+.owarn{display:inline-flex;align-items:center;gap:.3rem;font-size:.7rem;font-weight:500;color:var(--rust);background:#fde;border:1px solid #fbc;padding:.15rem .5rem;border-radius:99px;margin-top:.3rem}
+
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.75rem;gap:.75rem}
+.btn{padding:.72rem 1.6rem;border-radius:8px;border:none;font-family:'Jost',sans-serif;font-size:.9375rem;font-weight:500;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--ink-2)}
+.btn-primary:disabled{background:var(--border);color:var(--ink-3);cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--ink-3);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ink-2);color:var(--ink)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#9c7838}
+
+.banner{border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.1rem;font-size:.875rem;display:flex;gap:.75rem;align-items:flex-start;line-height:1.5}
+.banner-warn{background:var(--rust-lt);border:1.5px solid var(--rust);color:#7a1e00}
+.banner-info{background:var(--sky-lt);border:1.5px solid var(--sky);color:#1e3d5a}
+.banner-gold{background:var(--gold-lt);border:1.5px solid var(--gold);color:#5c3d00}
+.banner-icon{flex-shrink:0;font-size:1.1rem;margin-top:.05rem}
+
+/* ── Results ── */
+.results-top{text-align:center;padding-bottom:1.5rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem}
+.results-title{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:.4rem}
+.results-sub{color:var(--ink-3);font-size:.9375rem}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.625rem;margin-bottom:1.5rem}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.875rem;text-align:center}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500}
+.stat-l{font-size:.75rem;color:var(--ink-3);margin-top:.1rem}
+
+.formula-block{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:.875rem}
+.formula-hdr{padding:.9rem 1.125rem;display:flex;align-items:center;gap:.75rem}
+.formula-icon{font-size:1.35rem;width:2.2rem;text-align:center}
+.formula-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:#fff}
+.formula-sub{font-size:.775rem;color:rgba(255,255,255,.7);margin-top:.1rem}
+.formula-body{padding:1rem 1.125rem}
+.timing-label{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:.5rem;margin-top:.875rem}
+.timing-label:first-child{margin-top:0}
+
+/* ingredient rows in results — with description */
+.ing-row{display:flex;align-items:flex-start;gap:.625rem;padding:.6rem 0;border-bottom:1px solid var(--border)}
+.ing-row:last-child{border-bottom:none}
+.ing-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:8px}
+.ing-info{flex:1;min-width:0}
+.ing-name{font-size:.9375rem;font-weight:500;line-height:1.3}
+.ing-desc{font-size:.8125rem;color:var(--ink-3);margin-top:.15rem;line-height:1.4}
+.ing-right{display:flex;flex-direction:column;align-items:flex-end;gap:.25rem;flex-shrink:0}
+.ing-dose{font-size:.8125rem;color:var(--ink-3);font-family:'DM Mono',monospace;white-space:nowrap}
+.timing-tag{font-size:.7rem;padding:.1rem .45rem;border-radius:99px;font-weight:500;white-space:nowrap}
+.t-am{background:#FEF9E7;color:#7D6608;border:1px solid #E8D5A0}
+.t-pm{background:#EBF5FB;color:#1A5276;border:1px solid #AED6F1}
+.t-meal{background:#EAFAF1;color:#1D8348;border:1px solid #A9DFBF}
+
+.disclaimer{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.125rem;font-size:.8125rem;color:var(--ink-3);line-height:1.6;margin-top:1.5rem}
+.disclaimer strong{color:var(--ink-2)}
+.restart{text-align:center;margin-top:1.25rem}
+.restart button{background:none;border:none;color:var(--ink-3);font-size:.875rem;cursor:pointer;text-decoration:underline;font-family:'Jost',sans-serif}
+
+/* ── Pricing page ── */
+.pricing-header{padding-bottom:1.25rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem}
+.pricing-title{font-family:'Cormorant Garamond',serif;font-size:1.75rem;margin-bottom:.3rem}
+.pricing-sub{color:var(--ink-3);font-size:.9rem;line-height:1.5}
+
+.pricing-section{margin-bottom:1.5rem}
+.pricing-section-label{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:.625rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
+
+.price-ing-row{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.7rem .875rem;
+  border:1.5px solid var(--border);
+  border-radius:9px;
+  margin-bottom:.4rem;
+  background:var(--bg);
+  transition:all .15s;
+}
+.price-ing-row.included{background:var(--card);border-color:var(--sage)}
+.price-ing-row.excluded{background:var(--bg);border-color:var(--border);opacity:.55}
+
+.toggle-btn{
+  width:40px;height:22px;border-radius:11px;border:none;cursor:pointer;
+  position:relative;transition:background .2s;flex-shrink:0;
+  background:var(--border);
+}
+.toggle-btn.on{background:var(--sage)}
+.toggle-btn::after{
+  content:'';position:absolute;width:16px;height:16px;border-radius:50%;
+  background:#fff;top:3px;left:3px;transition:transform .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
+}
+.toggle-btn.on::after{transform:translateX(18px)}
+
+.price-ing-info{flex:1;min-width:0}
+.price-ing-name{font-size:.9rem;font-weight:500;line-height:1.3}
+.price-ing-desc{font-size:.775rem;color:var(--ink-3);margin-top:.1rem}
+.price-ing-unit{font-size:.8125rem;color:var(--ink-3);font-family:'DM Mono',monospace;text-align:right;flex-shrink:0;min-width:60px}
+
+.price-added-label{font-size:.7rem;background:var(--gold-lt);color:var(--gold);border:1px solid #ddc08a;padding:.1rem .45rem;border-radius:99px;font-weight:500;flex-shrink:0}
+
+.price-summary{background:var(--ink);border-radius:12px;padding:1.25rem 1.5rem;color:#fff;margin-top:1.5rem}
+.price-summary-row{display:flex;justify-content:space-between;align-items:center;font-size:.9375rem;padding:.3rem 0}
+.price-summary-row.total{border-top:1px solid rgba(255,255,255,.15);margin-top:.5rem;padding-top:.75rem;font-weight:500;font-size:1.0625rem}
+.price-summary-row.total .amount{font-family:'Cormorant Garamond',serif;font-size:1.5rem}
+.price-summary-note{font-size:.775rem;color:rgba(255,255,255,.55);margin-top:.75rem;line-height:1.5}
+
+.price-cta{margin-top:1.25rem;display:flex;flex-direction:column;gap:.625rem}
+.btn-full{width:100%;text-align:center;padding:.875rem}
+
+/* category colors */
+.c-sleep{background:#3C3489}.c-stress{background:#185FA5}.c-cog{background:#854F0B}
+.c-weight{background:#2D6A4F}.c-immune{background:#6B3FA0}.c-joint{background:#7A4200}
+.c-cardio{background:#8B0000}.c-gut{background:#2E7D32}.c-skin{background:#993556}
+.c-energy{background:#4A5568}.c-hormone{background:#6B4C8A}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="hdr">
+    <div class="brand">Nutri<em>Lab</em></div>
+    <div class="sub">Personalized Health Assessment</div>
+  </div>
+  <div class="prog">
+    <div class="prog-row"><span id="prog-label">Welcome</span><span id="prog-pct">0%</span></div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+  <div id="qc"></div>
+</div>
+
+<script>
+// ─── CATEGORIES ───────────────────────────────────────────────────
+const CATS={
+  sleep:  {icon:'🌙',name:'Sleep',color:'c-sleep'},
+  stress: {icon:'🌿',name:'Stress & Anxiety',color:'c-stress'},
+  cog:    {icon:'🧠',name:'Cognitive Function',color:'c-cog'},
+  weight: {icon:'🏋️',name:'Weight Management',color:'c-weight'},
+  immune: {icon:'🛡️',name:'Immune & Antioxidant',color:'c-immune'},
+  joint:  {icon:'🦴',name:'Joint & Bone Health',color:'c-joint'},
+  cardio: {icon:'❤️',name:'Cardiovascular Health',color:'c-cardio'},
+  gut:    {icon:'🌱',name:'Gut & Digestive Health',color:'c-gut'},
+  skin:   {icon:'✨',name:'Skin, Hair & Nails',color:'c-skin'},
+  energy: {icon:'⚡',name:'Energy & Vitality',color:'c-energy'},
+  hormone:{icon:'🔬',name:'Hormonal Balance',color:'c-hormone'},
+};
+
+// ─── INGREDIENT BENEFIT DESCRIPTIONS (for results page) ──────────
+const ING_DESC={
+  'Melatonin':'Signals the brain to initiate sleep; helps reset circadian rhythm',
+  'L-Theanine':'Calms racing thoughts at bedtime and promotes relaxed alertness',
+  'L-Tryptophan':'Precursor to serotonin and melatonin — supports natural sleep onset',
+  'Ashwagandha 1.5%':'Reduces elevated evening cortisol that disrupts sleep and drives waking',
+  'GABA':'Primary inhibitory neurotransmitter; quiets nervous system activity for sleep',
+  'Lemon Balm 5:1':'Raises GABA levels and calms the mind; supports both sleep and anxiety',
+  'Hops 2%':'Mild sedative herb that shortens the time needed to fall asleep',
+  'Phosphatidylserine':'Blunts cortisol and ACTH stress response; supports HPA axis balance',
+  'Holy Basil 2%':'Reduces cortisol and inflammatory stress cytokines; adaptogenic support',
+  'Kava Kava 30%':'Kavapyrones enhance GABA-A receptor binding for acute anxiety relief',
+  'Magnolia 2%':'Honokiol binds GABA-A receptors; reduces cortisol and emotional exhaustion',
+  'SAMe':'Methyl donor for serotonin and dopamine synthesis; supports mood in burnout',
+  'Bacopa 45%':'Enhances hippocampal synaptic signalling for long-term memory consolidation',
+  'Huperzine A':'Inhibits acetylcholinesterase to raise brain acetylcholine for memory',
+  'Alpha GPC':'Most bioavailable choline source; precursor to acetylcholine for focus',
+  'Citicoline':'Dual mechanism: acetylcholine precursor and neuronal membrane phospholipid support',
+  'DMAE':'Crosses blood-brain barrier as choline precursor; improves vigilance and attention',
+  "Lion's Mane 40%":'Stimulates nerve growth factor (NGF) for long-term neuronal health and neuroprotection',
+  'Ginkgo Biloba 24/6':'Increases cerebral blood flow and protects neurons from oxidative damage',
+  'Creatine Monohydrate':'Replenishes ATP in neurons; supports memory and processing speed',
+  'PQQ':'Stimulates mitochondrial biogenesis in neurons; unique neuroprotective mechanism',
+  'Berberine HCl':'Activates AMPK (same as metformin); improves insulin sensitivity and blood sugar',
+  'Gymnema 25%':'Blocks intestinal sugar absorption; stimulates insulin secretion',
+  'Fenugreek 50%':'4-Hydroxyisoleucine stimulates insulin; soluble fiber slows glucose absorption',
+  'Cinnamon Extract 20:1':'Activates insulin receptor signalling; slows gastric emptying after meals',
+  'EGCG 95%':'Inhibits COMT enzyme to raise norepinephrine-driven thermogenesis and fat oxidation',
+  'Carnitine Tartrate':'Transports long-chain fatty acids into mitochondria for fat burning',
+  'Coleus Forskohlii 10%':'Activates cAMP to stimulate hormone-sensitive lipase (lipolysis)',
+  'Glucomannan':'Expands in the stomach to create satiety; slows glucose absorption',
+  'Inositol':'Restores insulin receptor sensitivity; particularly effective in hormonal weight gain',
+  'Garcinia Cambogia 60%':'HCA reduces lipogenesis and raises serotonin to suppress appetite',
+  'Inulin (Chicory)':'Selectively feeds beneficial Bifidobacterium for microbiome-mediated weight support',
+  'Psyllium Husk Powder':'Mucilaginous fiber that binds bile acids and regulates bowel transit',
+  'Beta-1,3-Glucans':'Activates macrophages and NK cells via Dectin-1 receptor for immune defence',
+  'Echinacea Angustifolia 4%':'CB2 receptor modulation activates macrophage phagocytosis against pathogens',
+  'Astragalus 0.4%':'Activates T-lymphocytes and NK cells; upregulates interferon production',
+  'Reishi Mycelia':'Ganoderic acids modulate macrophage and NK cell immune activity',
+  'Cordyceps 16%':'Modulates immune signalling and enhances mitochondrial oxygen utilisation',
+  'Quercetin 95%':'Inhibits NF-κB inflammatory pathway; zinc ionophore for antiviral defence',
+  'NAC (N-Acetyl Cysteine)':'Replenishes glutathione — the body\'s master antioxidant — and scavenges free radicals',
+  'Astaxanthin':'6,000× stronger than Vitamin C for singlet oxygen quenching; UV skin protection',
+  'CoQ10 (Ubiquinol)':'Essential mitochondrial coenzyme for ATP synthesis; ubiquinol is the active form',
+  'Grapeseed Extract 95%':'OPC antioxidants protect vascular endothelium and inhibit collagenase',
+  'Resveratrol 50%':'Activates SIRT1 longevity gene; reduces NF-κB inflammation and oxidises LDL',
+  'Boswellia Serrata 65%':'AKBA inhibits 5-lipoxygenase to reduce leukotriene joint inflammation',
+  'Glucosamine Sulfate (K)':'Substrate for cartilage glycosaminoglycan synthesis; rebuilds joint matrix',
+  'Chondroitin Sulfate 85%':'Inhibits MMP enzymes that degrade cartilage; anti-inflammatory',
+  'MSM':'Bioavailable sulfur for collagen and cartilage synthesis; joint anti-inflammatory',
+  'Vitamin D3':'Regulates calcium absorption for bone mineralisation; supports immune function',
+  'Vitamin K2 (MK7)':'Activates osteocalcin to direct calcium into bones rather than arteries',
+  'Bamboo 70% silica':'Silica cross-links collagen structure; strengthens hair, nail, and bone matrix',
+  'Nattokinase 20,000 FU/g':'Serine protease enzyme that dissolves fibrin to improve blood flow',
+  'Hawthorn 1.8%':'Dilates coronary arteries; ACE inhibition for blood pressure support',
+  'Red Yeast Rice (Ankascin)':'Natural Monacolin K inhibits HMG-CoA reductase to reduce cholesterol synthesis',
+  'Bromelain 2,400 GDU/g':'Proteolytic enzyme that reduces digestive inflammation and protein breakdown',
+  'Betaine HCl':'Acidifies stomach contents to correct low gastric acid and improve digestion',
+  'FOS':'Fructooligosaccharides selectively feed beneficial Bifidobacterium bacteria',
+  'Milk Thistle 80%':'Silymarin stabilises hepatocyte membranes and stimulates liver cell regeneration',
+  'Artichoke 5%':'Cynarin stimulates bile secretion for fat digestion and liver detoxification',
+  'Dandelion Root 4:1':'Choleretic herb that stimulates bile flow and provides prebiotic inulin',
+  'Fish Collagen (hydrolyzed)':'LMWCP peptides stimulate dermal fibroblasts to produce new collagen and hyaluronic acid',
+  'Hyaluronic Acid':'Deposits in dermal matrix to bind water and improve skin hydration',
+  'Biotin 100%':'Cofactor for carboxylase enzymes in keratin synthesis for hair and nails',
+  'DIM (Diindolylmethane)':'Shifts estrogen metabolism to protective 2-OH pathway; reduces hormonal acne',
+  'NR (Nicotinamide Riboside)':'Raises NAD+ levels via NRK pathway to activate sirtuins and PARP DNA repair',
+  'NMN':'Most efficient NAD+ precursor; activates SIRT1-7 longevity genes',
+  'NADH':'Activated B3 coenzyme that directly fuels mitochondrial ATP production',
+  'Vitamin B12 (Methylcobalamin)':'Neurologically active B12 form; essential for myelin sheath and nerve function',
+  'Vitamin B6 (P5P)':'Active B6 cofactor for serotonin, dopamine, and GABA synthesis',
+  'Vitamin B5 (Pantethine)':'Direct CoA precursor for fatty acid oxidation and energy metabolism',
+  'Eurycoma Longifolia 20:1':'Inhibits SHBG binding to increase free testosterone; stimulates LH/FSH',
+  'Shilajit 50%':'Fulvic acid mineral complex; supports testosterone via gonadotropin pathway',
+  'Maca 0.6%':'Modulates hypothalamic-pituitary-gonadal axis for hormonal balance in both sexes',
+  'Soy Isoflavones 40%':'Phytoestrogens reduce hot flash frequency and severity in menopause',
+  'Spermidine 3HCl':'Stimulates autophagy — cellular self-cleaning that declines with age',
+};
+
+// ─── PRICING (CAD per 30-day supply) ─────────────────────────────
+// Ingredient prices include pharmacist review + dispensing cost
+// (distributed across ingredients at ~$3/ingredient, assuming avg 6-ingredient order)
+const ING_PRICE={
+  'Melatonin':7.50,
+  'L-Theanine':9.00,
+  'L-Tryptophan':10.50,
+  'Ashwagandha 1.5%':11.00,
+  'GABA':9.50,
+  'Lemon Balm 5:1':9.00,
+  'Hops 2%':8.50,
+  'Phosphatidylserine':13.00,
+  'Holy Basil 2%':8.50,
+  'Kava Kava 30%':10.00,
+  'Magnolia 2%':9.50,
+  'SAMe':15.00,
+  'Bacopa 45%':11.00,
+  'Huperzine A':12.00,
+  'Alpha GPC':14.00,
+  'Citicoline':13.50,
+  'DMAE':9.50,
+  "Lion's Mane 40%":12.00,
+  'Ginkgo Biloba 24/6':9.50,
+  'Creatine Monohydrate':10.00,
+  'PQQ':13.00,
+  'Berberine HCl':12.00,
+  'Gymnema 25%':9.50,
+  'Fenugreek 50%':8.50,
+  'Cinnamon Extract 20:1':8.50,
+  'EGCG 95%':11.50,
+  'Carnitine Tartrate':11.00,
+  'Coleus Forskohlii 10%':9.50,
+  'Glucomannan':9.00,
+  'Inositol':10.50,
+  'Garcinia Cambogia 60%':9.00,
+  'Inulin (Chicory)':8.50,
+  'Psyllium Husk Powder':8.00,
+  'Beta-1,3-Glucans':11.50,
+  'Echinacea Angustifolia 4%':9.50,
+  'Astragalus 0.4%':9.00,
+  'Reishi Mycelia':11.00,
+  'Cordyceps 16%':11.50,
+  'Quercetin 95%':11.00,
+  'NAC (N-Acetyl Cysteine)':10.50,
+  'Astaxanthin':12.50,
+  'CoQ10 (Ubiquinol)':16.00,
+  'Grapeseed Extract 95%':9.50,
+  'Resveratrol 50%':12.00,
+  'Boswellia Serrata 65%':11.00,
+  'Glucosamine Sulfate (K)':9.50,
+  'Chondroitin Sulfate 85%':11.00,
+  'MSM':8.50,
+  'Vitamin D3':7.50,
+  'Vitamin K2 (MK7)':9.50,
+  'Bamboo 70% silica':8.50,
+  'Nattokinase 20,000 FU/g':13.50,
+  'Hawthorn 1.8%':9.00,
+  'Red Yeast Rice (Ankascin)':12.00,
+  'Bromelain 2,400 GDU/g':10.00,
+  'Betaine HCl':8.50,
+  'FOS':8.50,
+  'Milk Thistle 80%':9.50,
+  'Artichoke 5%':9.00,
+  'Dandelion Root 4:1':8.50,
+  'Fish Collagen (hydrolyzed)':15.00,
+  'Hyaluronic Acid':12.50,
+  'Biotin 100%':8.50,
+  'DIM (Diindolylmethane)':10.50,
+  'NR (Nicotinamide Riboside)':17.00,
+  'NMN':18.00,
+  'NADH':14.00,
+  'Vitamin B12 (Methylcobalamin)':8.50,
+  'Vitamin B6 (P5P)':8.00,
+  'Vitamin B5 (Pantethine)':9.50,
+  'Eurycoma Longifolia 20:1':12.00,
+  'Shilajit 50%':14.00,
+  'Maca 0.6%':10.00,
+  'Soy Isoflavones 40%':9.50,
+  'Spermidine 3HCl':19.00,
+};
+
+const SHIPPING=9.99;
+const TAX_RATE=0.13; // Ontario HST
+
+// ─── FOLLOW-UP QUESTIONS ──────────────────────────────────────────
+const FOLLOWUPS={
+  sleep:[
+    {aspect:'onset',aspectLabel:'Sleep Onset',questions:[
+      {id:'sleep_latency',text:'On most nights, how long does it take you to fall asleep after getting into bed?',type:'single',options:[
+        {label:'Less than 15 minutes — I fall asleep easily',score:0},
+        {label:'15–30 minutes — takes a little while',score:1},
+        {label:'30–60 minutes — I lie awake for a while',score:2},
+        {label:'More than an hour — I really struggle to fall asleep',score:3},
+      ]},
+      {id:'sleep_mind',text:'When trying to fall asleep, do you experience a racing or busy mind?',type:'single',options:[
+        {label:'Rarely or never',score:0},
+        {label:'Sometimes, but it doesn\'t stop me sleeping',score:1},
+        {label:'Often — my mind won\'t switch off',score:2},
+        {label:'Almost every night — it\'s a significant problem',score:3},
+      ]},
+    ],threshold:3,ingredients:[
+      {name:'Melatonin',dose:'0.5–1 mg',timing:'PM',cautions:['sedatives','benzodiazepines']},
+      {name:'L-Theanine',dose:'200 mg',timing:'PM',cautions:[]},
+      {name:'L-Tryptophan',dose:'500–1,000 mg',timing:'PM',cautions:['ssri','maoi','antidepressants']},
+    ]},
+    {aspect:'maintenance',aspectLabel:'Sleep Maintenance',questions:[
+      {id:'sleep_waking',text:'How often do you wake up in the middle of the night?',type:'single',options:[
+        {label:'Rarely — I sleep through most nights',score:0},
+        {label:'Once or twice a week',score:1},
+        {label:'Most nights — I wake at least once',score:2},
+        {label:'Every night — multiple times',score:3},
+      ]},
+      {id:'sleep_quality',text:'How do you feel when you wake up in the morning?',type:'single',options:[
+        {label:'Refreshed and ready to go',score:0},
+        {label:'Okay — takes me a few minutes',score:1},
+        {label:'Groggy or tired most mornings',score:2},
+        {label:'Exhausted — like I barely slept',score:3},
+      ]},
+    ],threshold:3,ingredients:[
+      {name:'Ashwagandha 1.5%',dose:'300 mg',timing:'PM',cautions:['thyroid_meds','ssri','antidepressants']},
+      {name:'GABA',dose:'250–500 mg',timing:'PM',cautions:[]},
+      {name:'Lemon Balm 5:1',dose:'300–600 mg',timing:'PM',cautions:[]},
+    ]},
+  ],
+  stress:[
+    {aspect:'hpa',aspectLabel:'Chronic Stress & Cortisol',questions:[
+      {id:'stress_freq',text:'How often do you feel stressed, overwhelmed, or anxious in daily life?',type:'single',options:[
+        {label:'Rarely — I generally feel calm',score:0},
+        {label:'Occasionally, in challenging situations',score:1},
+        {label:'Often — most days involve significant stress',score:2},
+        {label:'Constantly — stress is affecting my daily functioning',score:3},
+      ]},
+      {id:'stress_physical',text:'Do you notice physical signs of stress (tight muscles, headaches, elevated heart rate, trouble relaxing)?',type:'single',options:[
+        {label:'No physical signs',score:0},
+        {label:'Occasionally',score:1},
+        {label:'Frequently',score:2},
+        {label:'Almost constantly',score:3},
+      ]},
+    ],threshold:3,ingredients:[
+      {name:'Ashwagandha 1.5%',dose:'600 mg',timing:'AM',cautions:['thyroid_meds','ssri','antidepressants']},
+      {name:'Holy Basil 2%',dose:'300–600 mg',timing:'AM',cautions:[]},
+      {name:'Phosphatidylserine',dose:'100–200 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'acute',aspectLabel:'Acute Anxiety & Racing Mind',questions:[
+      {id:'anxiety_thoughts',text:'Do you experience racing or anxious thoughts during the day that are hard to control?',type:'single',options:[
+        {label:'No — my thinking is generally calm',score:0},
+        {label:'Sometimes, but mild',score:1},
+        {label:'Often — it distracts me from tasks',score:2},
+        {label:'Almost always — it\'s a significant daily problem',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'L-Theanine',dose:'200–400 mg',timing:'AM',cautions:[]},
+      {name:'GABA',dose:'250–500 mg',timing:'AM',cautions:[]},
+      {name:'Lemon Balm 5:1',dose:'300–600 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'burnout',aspectLabel:'Burnout & Emotional Exhaustion',questions:[
+      {id:'burnout_level',text:'Do you feel emotionally depleted, burned out, or unable to recover from stress even after rest?',type:'single',options:[
+        {label:'No — I recover from stress normally',score:0},
+        {label:'Sometimes after particularly heavy periods',score:1},
+        {label:'Often — recovery takes a long time',score:2},
+        {label:'Yes — I feel chronically depleted and burned out',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Magnolia 2%',dose:'200–400 mg',timing:'AM',cautions:[]},
+      {name:'SAMe',dose:'400–800 mg',timing:'AM',cautions:['ssri','antidepressants','psychiatric_meds']},
+    ]},
+  ],
+  cog:[
+    {aspect:'memory',aspectLabel:'Memory & Recall',questions:[
+      {id:'cog_memory',text:'How often do you forget names, words, or things you recently learned?',type:'single',options:[
+        {label:'Rarely — my memory is generally good',score:0},
+        {label:'Occasionally — minor lapses',score:1},
+        {label:'Fairly often — it bothers me',score:2},
+        {label:'Frequently — memory issues are affecting my life',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Bacopa 45%',dose:'300–450 mg',timing:'AM',cautions:[]},
+      {name:'Phosphatidylserine',dose:'100–300 mg',timing:'AM',cautions:[]},
+      {name:'Huperzine A',dose:'50–200 mcg',timing:'AM',cautions:['cholinergic_meds']},
+    ]},
+    {aspect:'focus',aspectLabel:'Focus & Concentration',questions:[
+      {id:'cog_focus',text:'How often do you experience brain fog, difficulty concentrating, or mental fatigue during the day?',type:'single',options:[
+        {label:'Rarely — I can focus well when needed',score:0},
+        {label:'Occasionally',score:1},
+        {label:'Often — it affects my productivity',score:2},
+        {label:'Most of the day — it\'s a significant problem',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'L-Theanine',dose:'200 mg',timing:'AM',cautions:[]},
+      {name:'Alpha GPC',dose:'300–600 mg',timing:'AM',cautions:[]},
+      {name:'Citicoline',dose:'250–500 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'neuro',aspectLabel:'Long-Term Brain Health',questions:[
+      {id:'cog_aging',text:'Are you concerned about cognitive decline or long-term brain health as you age?',type:'single',options:[
+        {label:'Not particularly concerned right now',score:0},
+        {label:'Mildly — it\'s something I think about',score:1},
+        {label:'Yes — I actively want to protect my cognitive health',score:2},
+        {label:'Very concerned — family history of cognitive decline',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:"Lion's Mane 40%",dose:'500–1,000 mg',timing:'AM',cautions:[]},
+      {name:'Ginkgo Biloba 24/6',dose:'120–240 mg',timing:'AM',cautions:['blood_thinners','warfarin']},
+      {name:'PQQ',dose:'10–20 mg',timing:'AM',cautions:[]},
+    ]},
+  ],
+  weight:[
+    {aspect:'bloodsugar',aspectLabel:'Blood Sugar & Insulin',questions:[
+      {id:'wt_cravings',text:'How often do you experience strong carbohydrate or sugar cravings?',type:'single',options:[
+        {label:'Rarely — I don\'t have strong food cravings',score:0},
+        {label:'Occasionally',score:1},
+        {label:'Daily — especially in the afternoon',score:2},
+        {label:'Constant — cravings drive my eating habits',score:3},
+      ]},
+      {id:'wt_energy_crash',text:'Do you experience energy crashes 1–2 hours after eating?',type:'single',options:[
+        {label:'No — my energy is fairly stable',score:0},
+        {label:'Occasionally after large meals',score:1},
+        {label:'Often after most meals',score:2},
+        {label:'Almost every time I eat — noticeable crash',score:3},
+      ]},
+    ],threshold:3,ingredients:[
+      {name:'Berberine HCl',dose:'500 mg',timing:'meal',cautions:['antidiabetics','metformin','statins','immunosuppressants']},
+      {name:'Gymnema 25%',dose:'400–800 mg',timing:'meal',cautions:[]},
+      {name:'Fenugreek 50%',dose:'500–1,000 mg',timing:'meal',cautions:[]},
+      {name:'Cinnamon Extract 20:1',dose:'250–500 mg',timing:'meal',cautions:[]},
+    ]},
+    {aspect:'fatburn',aspectLabel:'Metabolism & Fat Burning',questions:[
+      {id:'wt_metabolism',text:'Do you feel your metabolism is slower than it should be — gaining weight easily or struggling to lose despite effort?',type:'single',options:[
+        {label:'No — my weight is fairly stable and manageable',score:0},
+        {label:'Mild — I have to be careful but it\'s manageable',score:1},
+        {label:'Yes — I gain weight easily and struggle to lose it',score:2},
+        {label:'Significantly — very slow metabolism, weight loss feels impossible',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'EGCG 95%',dose:'200–400 mg',timing:'AM',cautions:[]},
+      {name:'Carnitine Tartrate',dose:'500–2,000 mg',timing:'AM',cautions:[]},
+      {name:'Coleus Forskohlii 10%',dose:'250 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'appetite',aspectLabel:'Appetite & Satiety',questions:[
+      {id:'wt_hunger',text:'How would you describe your hunger and satiety signals?',type:'single',options:[
+        {label:'Normal — I feel full after appropriate meals',score:0},
+        {label:'I get hungry sooner than I should',score:1},
+        {label:'I often feel hungry even after eating',score:2},
+        {label:'I rarely feel full — overeating is a constant struggle',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Glucomannan',dose:'1,000–3,000 mg',timing:'meal',cautions:['medications_take_separately']},
+      {name:'Inositol',dose:'1,000–4,000 mg',timing:'AM',cautions:[]},
+    ]},
+  ],
+  immune:[
+    {aspect:'immune_mod',aspectLabel:'Immune Strength',questions:[
+      {id:'immune_freq',text:'How often do you get sick with colds, flu, or infections?',type:'single',options:[
+        {label:'Rarely — less than once a year',score:0},
+        {label:'About once or twice a year',score:1},
+        {label:'3–4 times a year',score:2},
+        {label:'Frequently — I seem to catch everything',score:3},
+      ]},
+      {id:'immune_recovery',text:'When you do get sick, how long does it typically take to recover?',type:'single',options:[
+        {label:'A few days — I bounce back quickly',score:0},
+        {label:'About a week',score:1},
+        {label:'1–2 weeks — longer than most people',score:2},
+        {label:'More than 2 weeks — I struggle to fully recover',score:3},
+      ]},
+    ],threshold:3,ingredients:[
+      {name:'Beta-1,3-Glucans',dose:'250–500 mg',timing:'AM',cautions:[]},
+      {name:'Echinacea Angustifolia 4%',dose:'300–500 mg',timing:'AM',cautions:[]},
+      {name:'Astragalus 0.4%',dose:'500–1,500 mg',timing:'AM',cautions:[]},
+      {name:'Reishi Mycelia',dose:'500–1,000 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'antioxidant',aspectLabel:'Antioxidant & Inflammation',questions:[
+      {id:'immune_inflam',text:'Do you experience signs of chronic inflammation (persistent aches, skin issues, fatigue, or inflammatory diagnosis)?',type:'single',options:[
+        {label:'No — I don\'t have noticeable inflammation issues',score:0},
+        {label:'Mildly — occasional aches or minor issues',score:1},
+        {label:'Yes — I have noticeable chronic inflammation symptoms',score:2},
+        {label:'Significantly — I have a diagnosed inflammatory condition',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Quercetin 95%',dose:'500–1,000 mg',timing:'AM',cautions:[]},
+      {name:'NAC (N-Acetyl Cysteine)',dose:'600–1,200 mg',timing:'AM',cautions:[]},
+      {name:'Astaxanthin',dose:'4–12 mg',timing:'AM',cautions:[]},
+      {name:'CoQ10 (Ubiquinol)',dose:'100–200 mg',timing:'AM',cautions:['statins']},
+    ]},
+  ],
+  joint:[
+    {aspect:'joint_pain',aspectLabel:'Joint Pain & Mobility',questions:[
+      {id:'joint_pain',text:'How would you describe your joint comfort and mobility?',type:'single',options:[
+        {label:'No joint issues — full range of motion',score:0},
+        {label:'Occasional stiffness, especially in the morning',score:1},
+        {label:'Regular joint discomfort affecting daily activities',score:2},
+        {label:'Significant ongoing joint pain limiting my movement',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Boswellia Serrata 65%',dose:'300–500 mg',timing:'AM',cautions:[]},
+      {name:'Glucosamine Sulfate (K)',dose:'1,500 mg',timing:'AM',cautions:['potassium_restriction']},
+      {name:'Chondroitin Sulfate 85%',dose:'800–1,200 mg',timing:'AM',cautions:[]},
+      {name:'MSM',dose:'1,000–3,000 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'bone',aspectLabel:'Bone Density & Strength',questions:[
+      {id:'bone_concern',text:'Are you concerned about your bone density or bone health?',type:'single',options:[
+        {label:'No — bone health is not a current concern',score:0},
+        {label:'Mildly — I want to maintain good bone health preventively',score:1},
+        {label:'Yes — I\'ve been told my bone density is lower than average',score:2},
+        {label:'Significantly — I have osteoporosis or have had a fracture',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Vitamin D3',dose:'1,000–4,000 IU',timing:'AM',cautions:[]},
+      {name:'Vitamin K2 (MK7)',dose:'100–200 mcg',timing:'AM',cautions:['warfarin','anticoagulants']},
+      {name:'Bamboo 70% silica',dose:'100–200 mg',timing:'AM',cautions:[]},
+    ]},
+  ],
+  cardio:[
+    {aspect:'lipids',aspectLabel:'Cholesterol & Lipid Health',questions:[
+      {id:'cardio_chol',text:'Have you been told your cholesterol or triglycerides are elevated, or are you concerned about lipid levels?',type:'single',options:[
+        {label:'No — my cholesterol levels are normal',score:0},
+        {label:'Borderline — slightly elevated but managed by diet',score:1},
+        {label:'Yes — elevated cholesterol is a known concern',score:2},
+        {label:'Significantly elevated — I\'m actively managing this',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'CoQ10 (Ubiquinol)',dose:'100–200 mg',timing:'AM',cautions:['statins']},
+      {name:'Red Yeast Rice (Ankascin)',dose:'600–1,200 mg',timing:'AM',cautions:['statins','liver_meds']},
+      {name:'Resveratrol 50%',dose:'150–500 mg',timing:'AM',cautions:[]},
+      {name:'Hawthorn 1.8%',dose:'300–900 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'vascular',aspectLabel:'Blood Pressure & Circulation',questions:[
+      {id:'cardio_bp',text:'Do you have concerns about your blood pressure or circulation?',type:'single',options:[
+        {label:'No — my blood pressure is normal',score:0},
+        {label:'Mildly elevated — I\'m monitoring it',score:1},
+        {label:'Yes — I have high blood pressure or poor circulation',score:2},
+        {label:'Significant concern — I have a diagnosed cardiovascular condition',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Nattokinase 20,000 FU/g',dose:'100–200 mg',timing:'AM',cautions:['blood_thinners','warfarin','aspirin','anticoagulants']},
+      {name:'Hawthorn 1.8%',dose:'300–900 mg',timing:'AM',cautions:[]},
+      {name:'Grapeseed Extract 95%',dose:'100–300 mg',timing:'AM',cautions:[]},
+    ]},
+  ],
+  gut:[
+    {aspect:'digestion',aspectLabel:'Digestion & Bloating',questions:[
+      {id:'gut_digest',text:'How often do you experience bloating, gas, indigestion, or discomfort after eating?',type:'single',options:[
+        {label:'Rarely — digestion is generally comfortable',score:0},
+        {label:'Occasionally after certain foods',score:1},
+        {label:'Often — multiple times per week',score:2},
+        {label:'Almost every meal — it\'s a constant issue',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Bromelain 2,400 GDU/g',dose:'250–500 mg',timing:'meal',cautions:['blood_thinners']},
+      {name:'Betaine HCl',dose:'650–1,300 mg',timing:'meal',cautions:['gerd','peptic_ulcer']},
+    ]},
+    {aspect:'microbiome',aspectLabel:'Gut Microbiome & Regularity',questions:[
+      {id:'gut_microbiome',text:'How would you describe your gut health overall (bowel regularity, gut bacteria balance)?',type:'single',options:[
+        {label:'Good — I have regular, comfortable digestion',score:0},
+        {label:'Occasional irregularity or minor imbalance',score:1},
+        {label:'I have noticeable gut imbalance or irregularity',score:2},
+        {label:'I have a diagnosed gut condition (IBS, IBD, dysbiosis)',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Inulin (Chicory)',dose:'3,000–8,000 mg',timing:'AM',cautions:[]},
+      {name:'FOS',dose:'3,000–8,000 mg',timing:'AM',cautions:[]},
+      {name:'Psyllium Husk Powder',dose:'5,000–10,000 mg',timing:'meal',cautions:['medications_take_separately']},
+    ]},
+    {aspect:'liver',aspectLabel:'Liver & Detox Support',questions:[
+      {id:'gut_liver',text:'Are you concerned about liver health, detoxification, or do you consume alcohol regularly?',type:'single',options:[
+        {label:'No liver concerns and minimal alcohol intake',score:0},
+        {label:'Occasional alcohol — want general liver support',score:1},
+        {label:'Regular alcohol or known liver health concern',score:2},
+        {label:'Significant liver concern or diagnosed liver condition',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Milk Thistle 80%',dose:'150–420 mg',timing:'AM',cautions:[]},
+      {name:'Artichoke 5%',dose:'320–640 mg',timing:'AM',cautions:[]},
+      {name:'Dandelion Root 4:1',dose:'500–1,000 mg',timing:'AM',cautions:[]},
+    ]},
+  ],
+  skin:[
+    {aspect:'collagen',aspectLabel:'Skin Aging & Elasticity',questions:[
+      {id:'skin_aging',text:'Are you concerned about skin aging signs such as fine lines, loss of firmness, or dull skin?',type:'single',options:[
+        {label:'No current concerns',score:0},
+        {label:'Mild — starting to notice early changes',score:1},
+        {label:'Yes — noticeable aging I want to address',score:2},
+        {label:'Significant concern — advanced aging signs',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Fish Collagen (hydrolyzed)',dose:'2,500–5,000 mg',timing:'AM',cautions:[]},
+      {name:'Hyaluronic Acid',dose:'80–200 mg',timing:'AM',cautions:[]},
+      {name:'Astaxanthin',dose:'4–12 mg',timing:'AM',cautions:[]},
+      {name:'MSM',dose:'1,000–3,000 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'hair_nail',aspectLabel:'Hair & Nail Strength',questions:[
+      {id:'skin_hair',text:'Do you experience hair thinning, excessive shedding, or brittle/slow-growing nails?',type:'single',options:[
+        {label:'No — hair and nails are healthy',score:0},
+        {label:'Mild — slightly more shedding or some brittleness',score:1},
+        {label:'Noticeable — hair thinning or nails constantly breaking',score:2},
+        {label:'Significant — pronounced hair loss or very poor nail quality',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Biotin 100%',dose:'2,500–5,000 mcg',timing:'AM',cautions:['lab_tests_biotin']},
+      {name:'Bamboo 70% silica',dose:'100–300 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'acne',aspectLabel:'Acne & Skin Clarity',questions:[
+      {id:'skin_acne',text:'How much do acne, breakouts, or oily skin affect you?',type:'single',options:[
+        {label:'No skin breakout concerns',score:0},
+        {label:'Occasional mild breakouts',score:1},
+        {label:'Regular breakouts — it affects my confidence',score:2},
+        {label:'Persistent acne — it\'s an ongoing significant issue',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'DIM (Diindolylmethane)',dose:'100–200 mg',timing:'AM',cautions:['er_positive_cancer','thyroid_meds']},
+    ]},
+  ],
+  energy:[
+    {aspect:'fatigue',aspectLabel:'Chronic Fatigue & Stamina',questions:[
+      {id:'energy_fatigue',text:'How would you describe your energy levels throughout the day?',type:'single',options:[
+        {label:'Good — I have consistent energy most of the day',score:0},
+        {label:'Moderate — some dips but generally manageable',score:1},
+        {label:'Low — I feel tired much of the day and rely on caffeine',score:2},
+        {label:'Very low — chronic fatigue is significantly impacting my life',score:3},
+      ]},
+      {id:'energy_recovery',text:'How well do you recover after physical or mental exertion?',type:'single',options:[
+        {label:'Well — I recover within a day',score:0},
+        {label:'Reasonably — takes a day or two',score:1},
+        {label:'Poorly — I feel wiped out for extended periods',score:2},
+        {label:'Very poorly — I rarely feel truly recovered',score:3},
+      ]},
+    ],threshold:3,ingredients:[
+      {name:'CoQ10 (Ubiquinol)',dose:'100–300 mg',timing:'AM',cautions:['statins']},
+      {name:'NR (Nicotinamide Riboside)',dose:'250–500 mg',timing:'AM',cautions:[]},
+      {name:'NMN',dose:'250–500 mg',timing:'AM',cautions:[]},
+      {name:'Cordyceps 16%',dose:'500–1,000 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'bvit',aspectLabel:'B-Vitamin Deficiency',questions:[
+      {id:'energy_bvit',text:'Do you follow a vegetarian or vegan diet, or have you been told you have low B12 or B6 levels?',type:'single',options:[
+        {label:'No — I eat a varied diet and have no known deficiency',score:0},
+        {label:'I eat minimal animal products',score:1},
+        {label:'I am vegetarian or vegan and don\'t supplement B12',score:2},
+        {label:'I\'ve been told I have low B12 or have related fatigue/neurological symptoms',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Vitamin B12 (Methylcobalamin)',dose:'500–2,000 mcg',timing:'AM',cautions:[]},
+      {name:'Vitamin B6 (P5P)',dose:'25–100 mg',timing:'AM',cautions:[]},
+      {name:'Vitamin B5 (Pantethine)',dose:'450–900 mg',timing:'AM',cautions:[]},
+    ]},
+  ],
+  hormone:[
+    {aspect:'estrogen',aspectLabel:'Estrogen Balance & Female Hormones',questions:[
+      {id:'hormone_female',text:'Do you experience hormonal imbalance symptoms such as PMS, irregular cycles, perimenopause, or hot flashes?',type:'single',options:[
+        {label:'No hormonal imbalance symptoms',score:0},
+        {label:'Mild symptoms occasionally',score:1},
+        {label:'Noticeable symptoms affecting quality of life',score:2},
+        {label:'Significant hormonal symptoms — a major ongoing concern',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'DIM (Diindolylmethane)',dose:'100–200 mg',timing:'AM',cautions:['er_positive_cancer','thyroid_meds']},
+      {name:'Maca 0.6%',dose:'1,500–3,000 mg',timing:'AM',cautions:[]},
+      {name:'Soy Isoflavones 40%',dose:'40–80 mg',timing:'AM',cautions:['er_positive_cancer','thyroid_meds']},
+    ]},
+    {aspect:'testosterone',aspectLabel:'Testosterone & Male Vitality',questions:[
+      {id:'hormone_male',text:'Do you experience low energy, reduced libido, difficulty building muscle, or low motivation that may be hormone-related?',type:'single',options:[
+        {label:'No concerns in this area',score:0},
+        {label:'Mild — minor changes I\'ve noticed',score:1},
+        {label:'Yes — these symptoms are affecting my daily life',score:2},
+        {label:'Significant — I suspect low testosterone or hormonal decline',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Eurycoma Longifolia 20:1',dose:'200–400 mg',timing:'AM',cautions:[]},
+      {name:'Shilajit 50%',dose:'250–500 mg',timing:'AM',cautions:[]},
+      {name:'Maca 0.6%',dose:'1,500–3,000 mg',timing:'AM',cautions:[]},
+    ]},
+    {aspect:'longevity',aspectLabel:'Longevity & Healthy Aging',questions:[
+      {id:'hormone_aging',text:'How much of a priority is slowing biological aging and extending healthspan for you?',type:'single',options:[
+        {label:'Not a current priority',score:0},
+        {label:'Somewhat — I\'m interested in healthy aging',score:1},
+        {label:'Important to me — I actively think about longevity',score:2},
+        {label:'Very high priority — I follow longevity science closely',score:3},
+      ]},
+    ],threshold:2,ingredients:[
+      {name:'Resveratrol 50%',dose:'150–500 mg',timing:'AM',cautions:[]},
+      {name:'NMN',dose:'250–500 mg',timing:'AM',cautions:[]},
+      {name:'Spermidine 3HCl',dose:'1–5 mg',timing:'AM',cautions:[]},
+    ]},
+  ],
+};
+
+// ─── MEDICATION CATEGORIES ────────────────────────────────────────
+const MEDS=[
+  {id:'antidepressants',label:'Antidepressants or anti-anxiety medication',examples:'Prozac, Zoloft, Effexor, Cipralex, Wellbutrin, Lexapro',tags:['ssri','maoi','antidepressants','psychiatric_meds'],risk:'high'},
+  {id:'thyroid',label:'Thyroid medication',examples:'Synthroid, Eltroxin, levothyroxine, Armour Thyroid',tags:['thyroid_meds'],risk:'medium'},
+  {id:'blood_thinners',label:'Blood thinners or anticoagulants',examples:'Warfarin, Eliquis, Xarelto, Pradaxa, daily aspirin',tags:['blood_thinners','warfarin','aspirin','anticoagulants'],risk:'high'},
+  {id:'diabetes',label:'Diabetes or blood sugar medication',examples:'Metformin, insulin, Ozempic, Jardiance, Victoza',tags:['antidiabetics','metformin'],risk:'high'},
+  {id:'statins',label:'Cholesterol medication (statin)',examples:'Lipitor, Crestor, Zocor, Rosuvastatin, Atorvastatin',tags:['statins'],risk:'high'},
+  {id:'immunosuppressants',label:'Immunosuppressants or anti-rejection drugs',examples:'Cyclosporine, Tacrolimus, Prednisone, Methotrexate',tags:['immunosuppressants'],risk:'high'},
+  {id:'liver_meds',label:'Liver disease medication or history of liver problems',examples:'Any hepatic medication, alcoholic or fatty liver disease',tags:['liver_meds'],risk:'medium'},
+  {id:'sedatives',label:'Prescription sleep medication or sedatives',examples:'Zopiclone, Temazepam, Ativan, Clonazepam, Trazodone',tags:['sedatives','benzodiazepines'],risk:'medium'},
+  {id:'bipolar_epilepsy',label:'Bipolar disorder or epilepsy medication',examples:'Lithium, Valproic acid, Lamictal, Phenytoin',tags:['bipolar','epilepsy'],risk:'medium'},
+  {id:'er_cancer',label:'Hormone-sensitive cancer (breast, ovarian, uterine)',examples:'ER-positive breast cancer, on Tamoxifen or Letrozole',tags:['er_positive_cancer'],risk:'high'},
+  {id:'cholinergic',label:"Alzheimer's or dementia medication",examples:'Aricept (donepezil), Exelon (rivastigmine), Namenda',tags:['cholinergic_meds'],risk:'high'},
+  {id:'gerd',label:'Stomach ulcer, GERD, or acid reflux medication',examples:'Omeprazole, Pantoprazole, Nexium, Zantac, Pepcid',tags:['gerd','peptic_ulcer'],risk:'low'},
+  {id:'potassium',label:'Kidney disease or potassium-restricted diet',examples:'Kidney disease, dialysis, potassium restriction',tags:['potassium_restriction'],risk:'medium'},
+  {id:'none',label:'None of the above — I do not take regular medications',examples:'',tags:[],risk:'none'},
+];
+
+// ─── CONFLICT RULES ───────────────────────────────────────────────
+const CONFLICTS=[
+  ['L-Tryptophan','SAMe'],
+  ['Nattokinase 20,000 FU/g','Bromelain 2,400 GDU/g'],
+  ['Berberine HCl','Red Yeast Rice (Ankascin)'],
+  ['Huperzine A','Alpha GPC'],
+  ['Huperzine A','Citicoline'],
+  ['NMN','NR (Nicotinamide Riboside)'],
+  ['Fish Collagen (hydrolyzed)','Bovine Hydrolyzed Collagen'],
+  ['DIM (Diindolylmethane)','Soy Isoflavones 40%'],
+];
+
+// ─── STATE ────────────────────────────────────────────────────────
+const S={
+  phase:'welcome',
+  concerns:[],
+  answers:{},
+  meds:[],
+  _fuFlat:[],
+  fuQIdx:0,
+  formulaResult:null,   // built once, stored
+  pricingToggles:{},    // name -> boolean (included)
+  allPossibleIngredients:[], // every ingredient from all aspects (for pricing page to offer extras)
+};
+
+// ─── HELPERS ─────────────────────────────────────────────────────
+function setP(label,pct){
+  document.getElementById('prog-label').textContent=label;
+  document.getElementById('prog-pct').textContent=Math.round(pct)+'%';
+  document.getElementById('prog-fill').style.width=pct+'%';
+}
+function chkSvg(){return`<svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5l3 3 6-7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
+
+// ─── RENDER ───────────────────────────────────────────────────────
+function render(){
+  const c=document.getElementById('qc');
+  c.innerHTML='';
+  ({welcome:renderWelcome,concerns:renderConcerns,followup:renderFollowup,
+    safety_meds:renderMeds,results:renderResults,pricing:renderPricing})[S.phase](c);
+}
+
+// ─── WELCOME ──────────────────────────────────────────────────────
+function renderWelcome(c){
+  setP('Welcome',0);
+  c.innerHTML=`<div class="card">
+    <div class="q-eyebrow">NutriLab Health Assessment</div>
+    <h1 class="q-title">Find your personalized supplement formula</h1>
+    <p class="q-body">Answer a few short questions about your health concerns and current medications. We recommend only the ingredients that genuinely address your specific needs — nothing more.</p>
+    <div class="banner banner-gold" style="margin-top:.5rem">
+      <span class="banner-icon">⏱</span>
+      <span>Takes 3–5 minutes &nbsp;·&nbsp; Every formula reviewed by a licensed pharmacist before preparation</span>
+    </div>
+    <div class="nav" style="justify-content:flex-end">
+      <button class="btn btn-primary" onclick="S.phase='concerns';render()">Start Assessment →</button>
+    </div>
+  </div>`;
+}
+
+// ─── CONCERNS ────────────────────────────────────────────────────
+function renderConcerns(c){
+  setP('Step 1 — Your health concerns',10);
+  const sel=S.concerns;
+  c.innerHTML=`<div class="card">
+    <div class="q-eyebrow">Step 1 of 3</div>
+    <h2 class="q-title">What health goals would you like to address?</h2>
+    <p class="q-body">Select everything that applies. We will ask specific follow-up questions for each area you choose.</p>
+    <div class="opts grid2">${Object.entries(CATS).map(([k,cat])=>{
+      const on=sel.includes(k);
+      return`<div class="opt${on?' sel':''}" onclick="toggleC('${k}')">
+        <div class="chk">${on?chkSvg():''}</div>
+        <div class="ol">${cat.icon} ${cat.name}</div>
+      </div>`;
+    }).join('')}</div>
+    <div class="nav">
+      <button class="btn btn-ghost" onclick="S.phase='welcome';render()">← Back</button>
+      <button class="btn btn-primary" ${sel.length===0?'disabled':''} onclick="startFU()">
+        Continue${sel.length>0?' ('+sel.length+')':''} →
+      </button>
+    </div>
+  </div>`;
+}
+function toggleC(k){const i=S.concerns.indexOf(k);if(i>=0)S.concerns.splice(i,1);else S.concerns.push(k);render();}
+
+// ─── FOLLOWUP SETUP ───────────────────────────────────────────────
+function startFU(){
+  S._fuFlat=[];
+  S.concerns.forEach(catKey=>{
+    (FOLLOWUPS[catKey]||[]).forEach((aspect,ai)=>{
+      aspect.questions.forEach((q,qi)=>{S._fuFlat.push({catKey,aspectIdx:ai,qIdx:qi,question:q,aspect});});
+    });
+  });
+  S.fuQIdx=0;S.phase='followup';render();
+}
+
+// ─── FOLLOWUP QUESTIONS ───────────────────────────────────────────
+function renderFollowup(c){
+  const total=S._fuFlat.length,idx=S.fuQIdx;
+  const {catKey,question,aspect}=S._fuFlat[idx];
+  const cat=CATS[catKey];
+  setP(`${cat.icon} ${cat.name} — ${aspect.aspectLabel}`,15+(idx/total)*45);
+  const ans=S.answers[question.id];
+  c.innerHTML=`<div class="card">
+    <div class="q-eyebrow">${cat.icon} ${cat.name} &mdash; ${aspect.aspectLabel} &nbsp;·&nbsp; ${idx+1} of ${total}</div>
+    <h2 class="q-title">${question.text}</h2>
+    <div class="opts">${question.options.map((opt,oi)=>{
+      const on=ans===oi;
+      return`<div class="opt radio-style${on?' sel':''}" onclick="setAns('${question.id}',${oi})">
+        <div class="chk" style="border-radius:50%">${on?chkSvg():''}</div>
+        <div class="ol">${opt.label}</div>
+      </div>`;
+    }).join('')}</div>
+    <div class="nav">
+      <button class="btn btn-ghost" onclick="fuBack()">← Back</button>
+      <button class="btn btn-primary" ${ans===undefined?'disabled':''} onclick="fuNext()">
+        ${idx===total-1?'Continue to Safety Check →':'Next Question →'}
+      </button>
+    </div>
+  </div>`;
+}
+function setAns(qId,oi){S.answers[qId]=oi;render();}
+function fuBack(){if(S.fuQIdx===0){S.phase='concerns';}else{S.fuQIdx--;}render();}
+function fuNext(){if(S.fuQIdx<S._fuFlat.length-1){S.fuQIdx++;render();}else{S.phase='safety_meds';render();}}
+
+// ─── MEDICATIONS ─────────────────────────────────────────────────
+function renderMeds(c){
+  setP('Step 3 — Medication safety check',65);
+  const sel=S.meds;
+  c.innerHTML=`<div class="card">
+    <div class="q-eyebrow">Step 3 of 3 — Safety Screening</div>
+    <h2 class="q-title">Are you currently taking any of these medications?</h2>
+    <p class="q-body">Some natural supplements interact with common medications. Your pharmacist will screen all interactions before your formula is prepared.</p>
+    <div class="banner banner-warn">
+      <span class="banner-icon">🔒</span>
+      <div>If you are unsure, select the category anyway — your pharmacist will assess and advise.</div>
+    </div>
+    <div class="opts">${MEDS.map(med=>{
+      const on=sel.includes(med.id);
+      const hw=med.risk==='high'&&med.id!=='none';
+      return`<div class="opt${on?' sel':''}${hw?' warn-opt':''}" onclick="toggleMed('${med.id}')">
+        <div class="chk">${on?chkSvg():''}</div>
+        <div class="opt-text">
+          <div class="ol">${med.label}</div>
+          ${med.examples?`<div class="od">${med.examples}</div>`:''}
+          ${hw?`<div class="owarn">⚠ Pharmacist review required</div>`:''}
+        </div>
+      </div>`;
+    }).join('')}</div>
+    <div class="nav">
+      <button class="btn btn-ghost" onclick="S.phase='followup';S.fuQIdx=S._fuFlat.length-1;render()">← Back</button>
+      <button class="btn btn-primary" ${sel.length===0?'disabled':''} onclick="goResults()">Generate My Formula →</button>
+    </div>
+  </div>`;
+}
+function toggleMed(id){
+  if(id==='none'){S.meds=['none'];}
+  else{S.meds=S.meds.filter(m=>m!=='none');const i=S.meds.indexOf(id);if(i>=0)S.meds.splice(i,1);else S.meds.push(id);}
+  render();
+}
+
+// ─── ALGORITHM ────────────────────────────────────────────────────
+function buildFormula(){
+  const medTags=new Set();
+  S.meds.forEach(id=>{const m=MEDS.find(x=>x.id===id);if(m)m.tags.forEach(t=>medTags.add(t));});
+  const needsReview=S.meds.some(id=>{const m=MEDS.find(x=>x.id===id);return m&&m.risk==='high'&&id!=='none';});
+
+  const formulaMap={};
+  const globalSeen=new Set();
+
+  S.concerns.forEach(catKey=>{
+    const aspects=FOLLOWUPS[catKey]||[];
+    const am=[],pm=[],meal=[];
+
+    aspects.forEach(aspect=>{
+      const score=aspect.questions.reduce((acc,q)=>{
+        const ai=S.answers[q.id];
+        return ai===undefined?acc:acc+q.options[ai].score;
+      },0);
+      if(score<aspect.threshold)return;
+
+      let added=0;
+      aspect.ingredients.forEach(ing=>{
+        if(added>=4||globalSeen.has(ing.name))return;
+        if(ing.cautions.some(c=>medTags.has(c)))return;
+        globalSeen.add(ing.name);
+        if(ing.timing==='AM')am.push(ing);
+        else if(ing.timing==='PM')pm.push(ing);
+        else meal.push(ing);
+        added++;
+      });
+    });
+
+    formulaMap[catKey]={am,pm,meal};
+  });
+
+  // Resolve ingredient-ingredient conflicts
+  const allSel=[];
+  Object.values(formulaMap).forEach(f=>allSel.push(...f.am,...f.pm,...f.meal));
+  CONFLICTS.forEach(([a,b])=>{
+    const iA=allSel.findIndex(i=>i.name===a);
+    const iB=allSel.findIndex(i=>i.name===b);
+    if(iA>=0&&iB>=0){
+      const toRemove=allSel[iB];allSel.splice(iB,1);
+      Object.values(formulaMap).forEach(f=>{
+        ['am','pm','meal'].forEach(t=>{
+          const idx=f[t].findIndex(x=>x.name===toRemove.name);
+          if(idx>=0)f[t].splice(idx,1);
+        });
+      });
+    }
+  });
+
+  // Cap at 4 per category
+  Object.values(formulaMap).forEach(f=>{
+    let tot=f.am.length+f.pm.length+f.meal.length;
+    while(tot>4){
+      if(f.meal.length>0)f.meal.pop();
+      else if(f.pm.length>0)f.pm.pop();
+      else f.am.pop();
+      tot--;
+    }
+  });
+
+  return{formulaMap,needsReview};
+}
+
+function goResults(){
+  S.formulaResult=buildFormula();
+  // Build all possible ingredients across all concerns (including those blocked by meds or caps)
+  // for the pricing page to show as add-ons
+  const allPossible=new Map();
+  S.concerns.forEach(catKey=>{
+    (FOLLOWUPS[catKey]||[]).forEach(aspect=>{
+      aspect.ingredients.forEach(ing=>{
+        if(!allPossible.has(ing.name))allPossible.set(ing.name,{...ing,catKey,aspectLabel:aspect.aspectLabel});
+      });
+    });
+  });
+  S.allPossibleIngredients=Array.from(allPossible.values());
+
+  // Set default toggles: recommended = on, others = off
+  const recNames=new Set();
+  Object.values(S.formulaResult.formulaMap).forEach(f=>{
+    [...f.am,...f.pm,...f.meal].forEach(i=>recNames.add(i.name));
+  });
+  S.pricingToggles={};
+  S.allPossibleIngredients.forEach(ing=>{
+    S.pricingToggles[ing.name]=recNames.has(ing.name);
+  });
+
+  S.phase='results';render();
+}
+
+// ─── RESULTS ──────────────────────────────────────────────────────
+function renderResults(c){
+  setP('Your personalized formula',100);
+  const {formulaMap,needsReview}=S.formulaResult;
+
+  let totAM=0,totPM=0,totMeal=0;
+  Object.values(formulaMap).forEach(f=>{totAM+=f.am.length;totPM+=f.pm.length;totMeal+=f.meal.length;});
+
+  const tTag=t=>{
+    if(t==='AM')return`<span class="timing-tag t-am">Morning</span>`;
+    if(t==='PM')return`<span class="timing-tag t-pm">Evening</span>`;
+    return`<span class="timing-tag t-meal">With meals</span>`;
+  };
+
+  const ingRowHtml=ing=>`<div class="ing-row">
+    <div class="ing-dot"></div>
+    <div class="ing-info">
+      <div class="ing-name">${ing.name}</div>
+      <div class="ing-desc">${ING_DESC[ing.name]||''}</div>
+    </div>
+    <div class="ing-right">
+      <div class="ing-dose">${ing.dose}</div>
+      ${tTag(ing.timing)}
+    </div>
+  </div>`;
+
+  let fHtml='';
+  const noTriggers=S.concerns.every(k=>{
+    const f=formulaMap[k];return f.am.length+f.pm.length+f.meal.length===0;
+  });
+
+  S.concerns.forEach(catKey=>{
+    const f=formulaMap[catKey];
+    const cat=CATS[catKey];
+    const hasItems=f.am.length+f.pm.length+f.meal.length>0;
+
+    if(hasItems){
+      fHtml+=`<div class="formula-block">
+        <div class="formula-hdr ${cat.color}">
+          <div class="formula-icon">${cat.icon}</div>
+          <div>
+            <div class="formula-name">${cat.name}</div>
+            <div class="formula-sub">${f.am.length+f.pm.length+f.meal.length} ingredient${f.am.length+f.pm.length+f.meal.length!==1?'s':''} recommended</div>
+          </div>
+        </div>
+        <div class="formula-body">`;
+      if(f.am.length+f.meal.length>0){
+        fHtml+=`<div class="timing-label">☀️ Morning</div>`;
+        [...f.am,...f.meal].forEach(ing=>{fHtml+=ingRowHtml(ing);});
+      }
+      if(f.pm.length>0){
+        fHtml+=`<div class="timing-label">🌙 Evening</div>`;
+        f.pm.forEach(ing=>{fHtml+=ingRowHtml(ing);});
+      }
+      fHtml+=`</div></div>`;
+    } else {
+      // Category selected but no ingredients triggered — show clearly with option to add on next page
+      fHtml+=`<div class="formula-block">
+        <div class="formula-hdr ${cat.color}" style="opacity:.75">
+          <div class="formula-icon">${cat.icon}</div>
+          <div>
+            <div class="formula-name">${cat.name}</div>
+            <div class="formula-sub">No supplement support needed based on your answers</div>
+          </div>
+        </div>
+        <div class="formula-body" style="display:flex;align-items:flex-start;gap:.75rem;padding:1rem 1.125rem">
+          <div style="font-size:1.1rem;flex-shrink:0;margin-top:.05rem">✅</div>
+          <div>
+            <div style="font-size:.9375rem;font-weight:500;color:var(--ink);margin-bottom:.25rem">Your ${cat.name.toLowerCase()} symptoms appear mild or well-managed.</div>
+            <div style="font-size:.8125rem;color:var(--ink-3);line-height:1.55">Based on your answers, supplemental support is not clinically indicated at this time. If you would still like to add ${cat.name.toLowerCase()} ingredients to your formula, you can do so on the next page.</div>
+          </div>
+        </div>
+      </div>`;
+    }
+  });
+
+  const reviewBanner=needsReview
+    ?`<div class="banner banner-warn"><span class="banner-icon">🔒</span><div><strong>Pharmacist review required</strong> — based on your medications, a licensed pharmacist will review your formula before preparation. This takes 2–4 hours during business hours.</div></div>`
+    :`<div class="banner banner-info"><span class="banner-icon">✓</span><div>No high-risk interactions flagged. Your formula will be reviewed by a licensed pharmacist as standard practice.</div></div>`;
+
+  c.innerHTML=`<div class="card">
+    <div class="results-top">
+      <div class="results-title">Your Personalized Formula</div>
+      <div class="results-sub">Based on your specific symptoms and health profile</div>
+    </div>
+    ${reviewBanner}
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--gold)">${totAM+totMeal}</div><div class="stat-l">Morning ingredients</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--sky)">${totPM}</div><div class="stat-l">Evening ingredients</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--sage)">${S.concerns.length}</div><div class="stat-l">Goals assessed</div></div>
+    </div>
+    ${fHtml}
+    <div class="disclaimer">
+      <strong>Clinical note:</strong> Ingredients are recommended only where your answers indicate a genuine clinical need. This is not medical advice. Every NutriLab formula is reviewed by a licensed pharmacist at CompoundIt Pharmacy before preparation, in accordance with Health Canada's NHP Compounding Policy.
+    </div>
+    <div class="nav" style="margin-top:1.25rem;justify-content:space-between">
+      <div class="restart" style="margin:0"><button onclick="resetQuiz()">Start over</button></div>
+      <button class="btn btn-gold" onclick="S.phase='pricing';render()">Review & Order →</button>
+    </div>
+  </div>`;
+}
+
+// ─── PRICING PAGE ─────────────────────────────────────────────────
+function renderPricing(c){
+  setP('Customize & Order',100);
+
+  // Gather all ingredients across all categories for display
+  // Build two groups: recommended (on) and available add-ons (off)
+  const recNames=new Set();
+  Object.values(S.formulaResult.formulaMap).forEach(f=>{
+    [...f.am,...f.pm,...f.meal].forEach(i=>recNames.add(i.name));
+  });
+
+  // Group by category
+  const byCat={};
+  S.allPossibleIngredients.forEach(ing=>{
+    if(!byCat[ing.catKey])byCat[ing.catKey]=[];
+    byCat[ing.catKey].push(ing);
+  });
+
+  let sectionsHtml='';
+  S.concerns.forEach(catKey=>{
+    const ings=byCat[catKey];
+    if(!ings||ings.length===0)return;
+    const cat=CATS[catKey];
+
+    // Separate recommended vs available
+    const recommended=ings.filter(i=>recNames.has(i.name));
+    const addOns=ings.filter(i=>!recNames.has(i.name));
+
+    let rowsHtml='';
+    recommended.forEach(ing=>{
+      const on=S.pricingToggles[ing.name]!==false;
+      const price=(ING_PRICE[ing.name]||6.00).toFixed(2);
+      rowsHtml+=`<div class="price-ing-row${on?' included':' excluded'}" id="prow-${CSS.escape(ing.name)}">
+        <button class="toggle-btn${on?' on':''}" onclick="toggleIng('${ing.name.replace(/'/g,"\\'")}')"></button>
+        <div class="price-ing-info">
+          <div class="price-ing-name">${ing.name}</div>
+          <div class="price-ing-desc">${ING_DESC[ing.name]||''}</div>
+        </div>
+        <div class="price-ing-unit">$${price}</div>
+      </div>`;
+    });
+
+    if(addOns.length>0){
+      rowsHtml+=`<div style="font-size:.75rem;color:var(--ink-3);margin:.75rem 0 .4rem;display:flex;align-items:center;gap:.5rem">
+        <span>Also available for ${cat.icon} ${cat.name}</span>
+        <span style="flex:1;height:1px;background:var(--border);display:block"></span>
+      </div>`;
+      addOns.forEach(ing=>{
+        const on=S.pricingToggles[ing.name]===true;
+        const price=(ING_PRICE[ing.name]||6.00).toFixed(2);
+        rowsHtml+=`<div class="price-ing-row${on?' included':' excluded'}" id="prow-${CSS.escape(ing.name)}">
+          <button class="toggle-btn${on?' on':''}" onclick="toggleIng('${ing.name.replace(/'/g,"\\'")}')"></button>
+          <div class="price-ing-info">
+            <div class="price-ing-name">${ing.name} ${!recNames.has(ing.name)?'<span class="price-added-label">Add-on</span>':''}</div>
+            <div class="price-ing-desc">${ING_DESC[ing.name]||''}</div>
+          </div>
+          <div class="price-ing-unit">$${price}</div>
+        </div>`;
+      });
+    }
+
+    sectionsHtml+=`<div class="pricing-section">
+      <div class="pricing-section-label">${cat.icon} ${cat.name}</div>
+      ${rowsHtml}
+    </div>`;
+  });
+
+  c.innerHTML=`<div class="card">
+    <div class="pricing-header">
+      <div class="pricing-title">Review & Customize Your Formula</div>
+      <div class="pricing-sub">Your recommended ingredients are already included. Toggle any on or off — your pharmacist will review the final selection before preparation.</div>
+    </div>
+
+    <div class="banner banner-info" style="margin-bottom:1.25rem">
+      <span class="banner-icon">ℹ</span>
+      <div>Prices shown are per 30-day supply. Toggle ingredients on or off to customize your formula. All prices in CAD.</div>
+    </div>
+
+    ${sectionsHtml}
+
+    <div class="price-summary" id="price-summary-block">
+      <!-- filled by calcPrice() -->
+    </div>
+
+    <div class="price-cta">
+      <button class="btn btn-gold btn-full" onclick="alert('Order flow coming soon — this would proceed to checkout.')">Proceed to Checkout →</button>
+      <button class="btn btn-ghost btn-full" onclick="S.phase='results';render()">← Back to Formula</button>
+    </div>
+
+    <div class="disclaimer" style="margin-top:1rem">
+      <strong>Pharmacist review:</strong> Regardless of any changes you make here, a licensed pharmacist at CompoundIt Pharmacy will review your final formula before preparation. They may contact you if they have any clinical questions about your selection.
+    </div>
+  </div>`;
+
+  calcPrice();
+}
+
+function toggleIng(name){
+  S.pricingToggles[name]=!S.pricingToggles[name];
+  // Re-render just the toggle row and summary
+  renderPricing(document.getElementById('qc'));
+}
+
+function calcPrice(){
+  let subtotal=0;
+  let selectedCount=0;
+  Object.entries(S.pricingToggles).forEach(([name,on])=>{
+    if(on){subtotal+=ING_PRICE[name]||6;selectedCount++;}
+  });
+
+  const beforeTax=subtotal+SHIPPING;
+  const tax=beforeTax*TAX_RATE;
+  const total=beforeTax+tax;
+
+  const block=document.getElementById('price-summary-block');
+  if(!block)return;
+  block.innerHTML=`
+    <div class="price-summary-row"><span>Supplements (${selectedCount} selected, 30-day supply)</span><span class="amount">$${subtotal.toFixed(2)}</span></div>
+    <div class="price-summary-row"><span>Shipping (Canada)</span><span class="amount">$${SHIPPING.toFixed(2)}</span></div>
+    <div class="price-summary-row"><span>HST (13%)</span><span class="amount">$${tax.toFixed(2)}</span></div>
+    <div class="price-summary-row total"><span>Total / month</span><span class="amount">$${total.toFixed(2)}</span></div>
+    <div class="price-summary-note">Billed monthly. Cancel anytime. All formulas prepared fresh by CompoundIt Pharmacy, Aurora ON, and shipped directly to you.</div>
+  `;
+}
+
+function resetQuiz(){
+  S.phase='welcome';S.concerns=[];S.answers={};S.meds=[];
+  S.fuQIdx=0;S._fuFlat=[];S.formulaResult=null;S.pricingToggles={};
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
