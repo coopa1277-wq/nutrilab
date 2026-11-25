@@ -1,0 +1,170 @@
+/* ===== ONE SKIN FOR EVERY PAGE ===== */
+/* ══════════════════════════════════════════════════════════════
+   ONE SKIN FOR EVERY PAGE
+   The quiz and the ingredient index arrived with design systems of
+   their own — their own greens, their own serifs, their own cards.
+   This layer puts them on the site's: Sweet Pea, Bebas Neue over
+   Barlow, hairlines instead of shadows, and one pill button.
+   Loaded after their scoped sheets, so it is the last word.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── the palette, mapped onto the names those pages already use ── */
+#page-quiz{
+  --sage:#9DA57B; --sageDk:#5E6840; --sageLt:#C3C9A6; --sageXLt:#F0F2E8;
+  --navy:#2E3123; --white:#FFFFFF; --cream:#F6F3EE; --warm:#E2DDD6;
+  --gray:#6F6B60; --grayLt:#9B9489; --dark:#2E3123; --rose:#B84A3A;
+}
+#page-ingredients{
+  --bg:#F6F3EE; --white:#FFFFFF;
+  --forest:#9DA57B; --forest-2:#5E6840; --forest-3:#6F7A4E;
+  --gold:#5E6840; --gold-pale:#F0F2E8;
+  --sage:#DDE0CB; --sage-2:#F0F2E8;
+  --ink:#2E3123; --ink-2:#504A43; --ink-3:#6F6B60; --ink-4:#9B9489;
+  --border:#E2DDD6; --border-2:#EDE9E2;
+  --warn-bg:#FAEAE8; --warn-border:#E6C4BB; --warn-text:#B84A3A;
+  --r:4px;
+}
+
+/* ── type: Barlow throughout, Bebas Neue for display ── */
+#page-quiz, #page-quiz *,
+#page-ingredients, #page-ingredients *,
+#page-order, #page-order *, #page-confirm, #page-confirm *{
+  font-family:'Barlow',system-ui,sans-serif;
+}
+#page-quiz h1.main, #page-quiz .result-big-title, #page-quiz .section-title,
+#page-ingredients .hero-h1, #page-ingredients .panel-title,
+#page-order .order-h1, #page-confirm .confirm-h1{
+  font-family:'Bebas Neue','Oswald','Arial Narrow',sans-serif;
+  font-weight:400;letter-spacing:.035em;line-height:.96;
+  color:var(--ink);font-style:normal;
+}
+#page-quiz h1.main{font-size:clamp(2rem,3.4vw,3rem)}
+#page-quiz .result-big-title{font-size:clamp(2.2rem,4vw,3.4rem)}
+#page-quiz .section-title{font-size:clamp(1.5rem,2.2vw,2.1rem)}
+#page-ingredients .hero-h1{font-size:clamp(2.6rem,5vw,4.6rem);color:#fff}
+#page-ingredients .hero-h1 em{font-style:italic;color:rgba(255,255,255,.72)}
+#page-ingredients .panel-title{font-size:clamp(1.5rem,2.2vw,2.1rem)}
+
+/* questions and card headings stay in Barlow: Bebas is caps-only and
+   a question set in capitals reads as a demand */
+#page-quiz .big-q{
+  font-family:'Barlow',sans-serif;font-weight:600;
+  font-size:clamp(1.05rem,1.8vw,1.35rem);color:var(--ink);line-height:1.45;
+}
+
+/* ── eyebrows and small caps ── */
+#page-quiz .eyebrow, #page-ingredients .hero-kicker, #page-ingredients .section-tag{
+  font-weight:600;letter-spacing:.18em;color:var(--olive);
+}
+#page-ingredients .hero-kicker{color:rgba(255,255,255,.72)}
+#page-ingredients .hero-kicker::before, #page-ingredients .hero-kicker::after{
+  background:rgba(255,255,255,.4);
+}
+
+/* ── surfaces: hairlines, not shadows ── */
+#page-quiz .card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:4px;box-shadow:none;
+}
+#page-quiz .opt, #page-quiz .chip, #page-quiz .form-input,
+#page-quiz .form-select, #page-quiz .back-btn{
+  border-radius:4px;border-width:1px;
+}
+#page-quiz .opt:hover, #page-quiz .opt.selected,
+#page-quiz .chip:hover, #page-quiz .chip.selected{
+  border-color:var(--olive);background:var(--sageXLt);
+}
+#page-quiz .plan{border-radius:4px}
+#page-ingredients .ing-card, #page-ingredients .panel,
+#page-ingredients .drawer, #page-ingredients .refs-block{
+  border-radius:4px;box-shadow:none;
+}
+
+/* ── buttons: one pill, everywhere ── */
+#page-quiz .btn, #page-ingredients .btn-add, #page-ingredients .btn-checkout,
+#page-order .btn-place-order{
+  border-radius:999px;background:var(--olive);color:#fff;
+  font-weight:600;letter-spacing:.015em;box-shadow:none;
+}
+#page-quiz .btn:hover, #page-ingredients .btn-add:hover,
+#page-ingredients .btn-checkout:hover, #page-order .btn-place-order:hover{
+  background:var(--olive-deep);box-shadow:none;transform:none;
+}
+#page-quiz .pill, #page-quiz .sel-tag, #page-quiz .result-pill,
+#page-ingredients .panel-pill{border-radius:999px}
+
+/* ── progress: the site's olive, not a second green ── */
+#page-quiz .topbar-fill, #page-quiz .pbar, #page-quiz .dot.cur{background:var(--olive)}
+#page-quiz .dot.done{background:var(--moss)}
+
+/* the site already carries the logo in the nav, so the quiz's own
+   bar keeps only its back button */
+#page-quiz .logo-bar{background:transparent;border-bottom:1px solid var(--rule)}
+#page-quiz .logo{display:none}
+#page-quiz .logo-bar{justify-content:flex-start}
+
+/* ── the ingredient page opens like the rest of the site ── */
+#page-ingredients .hero{
+  background:var(--moss);min-height:auto;
+  padding:clamp(4rem,9vh,6rem) 0 clamp(3.5rem,8vh,5rem);
+}
+#page-ingredients .hero-p{color:rgba(255,255,255,.82)}
+#page-ingredients .hero-scroll{color:rgba(255,255,255,.6)}
+#page-ingredients .hero-scroll-line{background:rgba(255,255,255,.4)}
+#page-ingredients .hero-bg-art{opacity:.12}
+#page-ingredients .ing-name{
+  font-family:'Bebas Neue','Oswald',sans-serif;font-weight:400;
+  letter-spacing:.04em;font-size:1.3rem;color:var(--ink);
+}
+#page-ingredients .trust-n{font-family:'Bebas Neue','Oswald',sans-serif;letter-spacing:.02em}
+#page-ingredients .basket-fab{background:var(--olive)}
+#page-ingredients .fab-badge{background:#B8924A}
+#page-ingredients .tab.active{background:var(--olive);color:#fff}
+
+/* ── order and confirmation ── */
+#page-order .order-h1{font-size:clamp(2.2rem,4vw,3.4rem)}
+#page-confirm .confirm-h1{font-size:clamp(2.2rem,4vw,3.4rem)}
+#page-order .form-input, #page-order .order-summary, #page-confirm .confirm-box{
+  border-radius:4px;box-shadow:none;
+}
+
+/* ── icon holders are empty now that the emoji are gone ── */
+#page-quiz .chip-icon:empty, #page-ingredients .panel-icon:empty,
+#page-ingredients .caution-icon:empty, #page-ingredients .fallback-icon:empty,
+#page-ingredients .ing-caution .caution-icon{display:none}
+#page-quiz .chip{gap:0}
+
+/* ── the ingredient page, section by section ── */
+#page-ingredients .hero{padding:clamp(3rem,7vh,4.5rem) 0 clamp(2rem,5vh,3rem)}
+#page-ingredients .hero-content{padding:0 2rem}
+#page-ingredients .intro h2{
+  font-family:'Bebas Neue','Oswald','Arial Narrow',sans-serif;
+  font-style:normal;font-weight:400;letter-spacing:.035em;line-height:.96;
+  font-size:clamp(2.3rem,4vw,3.7rem);color:var(--ink);
+}
+#page-ingredients .intro h2 em{font-style:italic;color:var(--olive)}
+#page-ingredients .tabs-bar{
+  background:transparent;border:0;border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);border-radius:0;box-shadow:none;
+  padding:.85rem .5rem;
+}
+#page-ingredients .tab{
+  border-radius:999px;border:1px solid transparent;background:transparent;
+  color:var(--text-muted);font-weight:500;
+}
+#page-ingredients .tab:hover{color:var(--ink);border-color:var(--rule)}
+#page-ingredients .tab.active{background:var(--olive);border-color:var(--olive);color:#fff}
+#page-ingredients .ing-card{border:1px solid var(--border);background:var(--white)}
+#page-ingredients .ing-photo{border-radius:0}
+#page-ingredients .ing-caution{border-radius:0;border-left:2px solid var(--gold)}
+#page-ingredients .site-footer{background:var(--olive-deep)}
+
+/* ── the quiz, step by step ── */
+#page-quiz .section-title, #page-quiz .result-big-title{color:var(--ink)}
+#page-quiz .result-tagline{color:var(--text-muted)}
+#page-quiz .divider{background:var(--rule)}
+#page-quiz .fx-box, #page-quiz .checkout-summary{border-radius:4px}
+
+/* the quiz's own fixed progress strip sat behind the site nav; the card
+   carries its own progress, so the strip goes */
+#page-quiz .topbar{display:none}

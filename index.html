@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F6F3EE">
+<title>NutriLab — One capsule, made exactly for you</title>
+<meta name="description" content="A personalized 30-day supplement formula, designed by a pharmacologist from 172 clinically-ranked ingredients and compounded fresh as a single daily capsule.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/quiz.css">
+<link rel="stylesheet" href="/css/ingredients.css">
+<link rel="stylesheet" href="/css/skin.css">
+<link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+
+<nav id="site-nav">
+  <a class="nav-logo" href="/" aria-current="page" aria-label="NutriLab home">
+    <img src="/assets/logo.png" alt="NutriLab">
+  </a>
+
+  <div class="nav-links">
+    <a href="/" aria-current="page">Home</a>
+    <a href="/quiz">Take the Quiz</a>
+    <a href="/ingredients">Ingredients</a>
+    <a href="/about">About</a>
+    <button class="nav-cta" onclick="location.href='/quiz'">Get Your Formula</button>
+    <div class="nav-note">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      Pharmacist reviewed
+    </div>
+  </div>
+
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <a href="/">Home</a>
+  <a href="/quiz">Take the Quiz</a>
+  <a href="/ingredients">Ingredients</a>
+  <a href="/about">About</a>
+  <button class="nav-drawer-cta" onclick="location.href='/quiz'">Get Your Formula</button>
+  <div class="nav-drawer-note">Every formula pharmacist reviewed</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOME — the capsule stage
+     ══════════════════════════════════════════════════════════════ -->
+
+<div id="page-hero" class="site-page active">
+
+  <section id="capsule-stage">
+    <div class="stage-canvas">
+      <canvas id="capsule-canvas"></canvas>
+      <!-- the product itself: shown as-is until WebGL takes over,
+           and used as the texture for the floating bottle -->
+      <img id="bottle-src" class="bottle-fallback"
+           src="/assets/founder.png"
+           alt="NutriLab — one capsule, entirely yours">
+    </div>
+
+    <div class="stage-panels">
+
+      <!-- ── hero ── -->
+      <div class="stage-panel stage-hero">
+        <div class="hero-copy">
+          <h1 class="d1">Supplements made<br><em>exactly</em> for <strong>you.</strong></h1>
+          <p class="lede">Answer a short health assessment. Our pharmacologist-built AI designs your 30-day formula from 172 clinically-ranked ingredients — reviewed by a licensed pharmacist before every shipment.</p>
+          <div class="hero-actions">
+            <button class="btn btn-solid" onclick="goToQuiz()">Take the Free Assessment</button>
+            <button class="btn btn-line" onclick="showPage('about')">Our Story</button>
+          </div>
+          <div class="hero-figures">
+            <div><div class="figure-n">172</div><div class="figure-l">Clinically ranked ingredients</div></div>
+            <div><div class="figure-n">11</div><div class="figure-l">Health categories</div></div>
+            <div><div class="figure-n">100%</div><div class="figure-l">Pharmacist reviewed</div></div>
+          </div>
+        </div>
+        <div class="stage-scroll"><i></i><span>Scroll</span></div>
+      </div>
+
+      <!-- ── annotation ── -->
+      <div class="stage-panel" id="annotation-stage">
+        <div class="annot-title">
+          <h2 class="d3">Founded by MSc Pharmacology</h2>
+          <p>What goes into one capsule, and why.</p>
+        </div>
+
+        <div class="annot">
+          <div class="annot-rule"></div>
+          <h3>Evidence first</h3>
+          <p>Every ingredient backed by peer-reviewed science.</p>
+        </div>
+        <div class="annot">
+          <div class="annot-rule"></div>
+          <h3>Clinically studied doses</h3>
+          <p>Meaningful, evidence-guided doses.</p>
+        </div>
+        <div class="annot">
+          <div class="annot-rule"></div>
+          <h3>Pharmacologist reviewed</h3>
+          <p>Every formula, with care.</p>
+        </div>
+        <div class="annot">
+          <div class="annot-rule"></div>
+          <h3>Full transparency</h3>
+          <p>Every dose. Every reason. No proprietary blends, no hidden doses.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── three steps, over the compounding floor ── -->
+  <section class="process">
+    <video autoplay muted loop playsinline>
+      <source src="/assets/compounding.mp4" type="video/mp4">
+    </video>
+    <div class="process-inner">
+      <h2 class="d2">Three steps to your<br><em>personalized formula</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">01</div>
+          <h3>Complete the health assessment</h3>
+          <p>3-5 minutes. Tell us about your health goals, symptoms, and medications.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <h3>Pharmacologist-built AI builds your formula</h3>
+          <p>Our algorithm selects only the strongest-evidence ingredients for your goals at the doses used in clinical studies. If the evidence isn't there, it doesn't go in.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <h3>One pill, delivered</h3>
+          <p>Your personalized 30-day formula, one pill, arrives at your door.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ingredient index ── -->
+  <section class="library">
+    <div class="library-inner">
+      <div class="library-head">
+        <h2 class="d2">172 clinically-ranked<br>Health Canada NHPs</h2>
+        <button class="btn btn-line" onclick="goToQuiz()">Build My Formula →</button>
+      </div>
+      <dl class="ing-index">
+        <div class="ing-row"><dt>Ashwagandha 1.5%</dt><dd>HPA axis normalisation &amp; cortisol reduction</dd></div>
+        <div class="ing-row"><dt>CoQ10 Ubiquinol</dt><dd>Mitochondrial ETC energy production</dd></div>
+        <div class="ing-row"><dt>Lion's Mane 40%</dt><dd>NGF stimulation &amp; neuroplasticity</dd></div>
+        <div class="ing-row"><dt>Beta-1,3-Glucans</dt><dd>Dectin-1 macrophage &amp; NK cell activation</dd></div>
+        <div class="ing-row"><dt>L-Glycine</dt><dd>Inhibitory brainstem neurotransmitter for sleep</dd></div>
+        <div class="ing-row"><dt>Boswellia 65%</dt><dd>5-LOX inhibition for joint inflammation</dd></div>
+        <div class="ing-row"><dt>Vitamin D3</dt><dd>Immune gene expression &amp; bone mineralisation</dd></div>
+        <div class="ing-row"><dt>L-Theanine</dt><dd>Alpha-wave induction &amp; GABA modulation</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── chapters: one reel, each sliding over the last ── -->
+  <div class="reel">
+  <section class="chapter">
+    <video autoplay muted loop playsinline>
+      <source src="/assets/skin.mp4" type="video/mp4">
+    </video>
+    <div class="chapter-body">
+      <h2 class="d2">Your skin.<br>From the inside out.</h2>
+      <p>Hyaluronic Acid, Astaxanthin, Collagen, Niacinamide — evidence-based ingredients that support skin hydration, elasticity, and clarity at clinically effective doses.</p>
+      <button class="btn btn-light" onclick="goToQuiz()">BUILD MY FORMULA</button>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <video autoplay muted loop playsinline>
+      <source src="/assets/sleep.mp4" type="video/mp4">
+    </video>
+    <div class="chapter-body">
+      <h2 class="d2">Sleep deeper.<br>Wake restored.</h2>
+      <p>Magnesium Glycinate, Ashwagandha, L-Theanine — clinically studied ingredients that help you fall asleep faster, stay asleep longer, and wake up actually rested.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <video autoplay muted loop playsinline>
+      <source src="/assets/stress.mp4" type="video/mp4">
+    </video>
+    <div class="chapter-body right">
+      <h2 class="d2">Less stress.<br>Every day.</h2>
+      <p>Ashwagandha KSM-66, L-Theanine, Phosphatidylserine — evidence-backed formulas that lower cortisol, quiet a racing mind, and help your nervous system actually recover.</p>
+    </div>
+  </section>
+
+  </div>
+
+  <!-- ── closer ── -->
+  <section class="closer">
+    <h2 class="d2">Your personalized formula<br>is 3 minutes away</h2>
+    <p>Take our free health assessment. Our pharmacology-backed algorithm builds your formula — reviewed by a licensed pharmacist before it ships.</p>
+    <button class="btn btn-light" onclick="goToQuiz()">Take the Free Assessment →</button>
+  </section>
+
+</div>
+
+<!-- ===== AI CHAT ===== -->
+<div id="chat-bubble" onclick="toggleChat()" style="
+  position:fixed; bottom:24px; right:24px; z-index:999;
+  width:56px; height:56px; border-radius:50%;
+  background:var(--moss); color:white;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; box-shadow:0 4px 20px rgba(157,165,123,0.4);
+  transition:transform 0.2s;
+" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+  <svg id="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  <svg id="chat-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+</div>
+
+<div id="chat-window" style="
+  position:fixed; bottom:92px; right:24px; z-index:998;
+  width:360px; height:520px;
+  background:white; border-radius:20px;
+  border:1px solid var(--border);
+  box-shadow:0 12px 48px rgba(61,43,31,0.15);
+  display:none; flex-direction:column; overflow:hidden;
+">
+  <!-- Header -->
+  <div style="background:var(--bark); padding:1.2rem 1.4rem; display:flex; align-items:center; gap:12px;">
+    <div style="width:38px;height:38px;border-radius:50%;background:var(--moss);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+    <div>
+      <div style="font-weight:500;font-size:0.95rem;color:white;">NutriLab Assistant</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:5px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#6fcf6f;display:inline-block;"></span>
+        Online · Powered by AI
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div id="chat-messages" style="flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:0.8rem;">
+    <div class="msg-ai">
+      Hi! I'm your NutriLab wellness advisor. I can help you find the right supplements for your health goals, answer questions about our ingredients, or explain how our formulas work. What can I help you with today?
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div style="padding:0.9rem;border-top:1px solid var(--border);display:flex;gap:8px;background:var(--cream);">
+    <input id="chat-input" type="text" placeholder="Ask me anything about supplements..."
+      style="flex:1;padding:0.65rem 1rem;border:1.5px solid var(--border);border-radius:100px;
+      font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text);
+      background:white;outline:none;"
+      onkeydown="if(event.key==='Enter') sendChat()"
+      onfocus="this.style.borderColor='var(--moss)'"
+      onblur="this.style.borderColor='var(--border)'">
+    <button onclick="sendChat()" style="
+      width:38px;height:38px;border-radius:50%;background:var(--moss);
+      border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;transition:background 0.2s;"
+      onmouseover="this.style.background='var(--moss-light)'"
+      onmouseout="this.style.background='var(--moss)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </button>
+  </div>
+</div>
+
+<script src="/js/three.min.js"></script>
+<script src="/js/scene3d.js"></script>
+<script src="/js/reveal.js"></script>
+<script src="/js/chat.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/menu.js"></script>
+</body>
+</html>

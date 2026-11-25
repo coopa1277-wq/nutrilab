@@ -1,0 +1,2576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F6F3EE">
+<title>Ingredients — NutriLab</title>
+<meta name="description" content="Every ingredient we use, what it does, and the evidence behind it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/quiz.css">
+<link rel="stylesheet" href="/css/ingredients.css">
+<link rel="stylesheet" href="/css/skin.css">
+<link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+
+<nav id="site-nav">
+  <a class="nav-logo" href="/" aria-label="NutriLab home">
+    <img src="/assets/logo.png" alt="NutriLab">
+  </a>
+
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/quiz">Take the Quiz</a>
+    <a href="/ingredients" aria-current="page">Ingredients</a>
+    <a href="/about">About</a>
+    <button class="nav-cta" onclick="location.href='/quiz'">Get Your Formula</button>
+    <div class="nav-note">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      Pharmacist reviewed
+    </div>
+  </div>
+
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <a href="/">Home</a>
+  <a href="/quiz">Take the Quiz</a>
+  <a href="/ingredients">Ingredients</a>
+  <a href="/about">About</a>
+  <button class="nav-drawer-cta" onclick="location.href='/quiz'">Get Your Formula</button>
+  <div class="nav-drawer-note">Every formula pharmacist reviewed</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOME — the capsule stage
+     ══════════════════════════════════════════════════════════════ -->
+
+<div id="page-ingredients" class="site-page active">
+<section class="hero">
+  <!-- Minimal botanical SVG art — no photos -->
+  <svg class="hero-bg-art" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+    <!-- Large leaf right -->
+    <path d="M1350 -80 C1350 -80 1050 120 1120 450 C1190 780 1440 820 1440 820 C1440 820 1500 500 1420 250 C1360 50 1350 -80 1350 -80Z" fill="white" opacity=".6"/>
+    <path d="M1350 -80 L1280 820" stroke="white" stroke-width="1.5" opacity=".4"/>
+    <path d="M1350 200 C1300 220 1230 210 1190 200" stroke="white" stroke-width="1" opacity=".3"/>
+    <path d="M1320 360 C1370 370 1410 350 1435 335" stroke="white" stroke-width="1" opacity=".3"/>
+    <path d="M1295 500 C1240 510 1195 490 1170 475" stroke="white" stroke-width="1" opacity=".3"/>
+    <!-- Large leaf left -->
+    <path d="M-120 950 C-120 950 180 750 110 420 C40 90 -200 50 -200 50 C-200 50 -260 370 -180 620 C-120 820 -120 950 -120 950Z" fill="white" opacity=".4"/>
+    <path d="M-120 950 L-50 50" stroke="white" stroke-width="1.5" opacity=".3"/>
+    <!-- Small sprig top center -->
+    <line x1="720" y1="0" x2="720" y2="180" stroke="white" stroke-width="1" opacity=".25"/>
+    <ellipse cx="688" cy="80" rx="32" ry="18" fill="white" opacity=".18" transform="rotate(-25 688 80)"/>
+    <ellipse cx="752" cy="130" rx="32" ry="18" fill="white" opacity=".18" transform="rotate(20 752 130)"/>
+    <!-- Subtle grid dots -->
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="white" opacity=".12"/>
+    </pattern>
+    <rect width="1440" height="900" fill="url(#dots)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-kicker">NutriLab &nbsp;·&nbsp; Ingredient Library</div>
+    <h1 class="hero-h1">Every ingredient.<br><em>Explained plainly.</em></h1>
+    <p class="hero-p">We believe you should understand exactly what goes into your body — and why. Browse every ingredient we use, what it does, and the science behind it.</p>
+    <button class="hero-scroll" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">
+      Explore ingredients
+      <div class="hero-scroll-line"></div>
+    </button>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-n">70+</div><div class="trust-l">Ingredients</div></div>
+  <div class="trust-item"><div class="trust-n">11</div><div class="trust-l">Health categories</div></div>
+  <div class="trust-item"><div class="trust-n">100%</div><div class="trust-l">Pharmacist reviewed</div></div>
+  <div class="trust-item"><div class="trust-n">0</div><div class="trust-l">Proprietary blends</div></div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="section-tag">Our Approach</div>
+  <h2>Science-backed.<br>Honestly explained.</h2>
+  <p>Every ingredient is chosen from peer-reviewed clinical research. We translate the science into plain language so you can make truly informed decisions about your health.</p>
+</div>
+
+<section id="explore">
+<div class="tabs-section" style="padding-top:.5rem">
+  <div class="tabs-hint">Browse by health goal</div>
+  <div class="tabs-bar" id="tabBar">
+    <button class="tab active" data-panel="sleep" onclick="switchTab('sleep',this)"> Sleep</button>
+    <button class="tab" data-panel="stress" onclick="switchTab('stress',this)">Stress & Anxiety</button>
+    <button class="tab" data-panel="cog" onclick="switchTab('cog',this)"> Cognitive Health</button>
+    <button class="tab" data-panel="weight" onclick="switchTab('weight',this)">Weight Management</button>
+    <button class="tab" data-panel="gut" onclick="switchTab('gut',this)">Gut & Digestive Health</button>
+    <button class="tab" data-panel="immune" onclick="switchTab('immune',this)">Immune & Antioxidant</button>
+    <button class="tab" data-panel="joint" onclick="switchTab('joint',this)">Joint & Bone Health</button>
+    <button class="tab" data-panel="cardio" onclick="switchTab('cardio',this)">Cardiovascular Health</button>
+    <button class="tab" data-panel="skin" onclick="switchTab('skin',this)">Skin, Hair & Nails</button>
+    <button class="tab" data-panel="energy" onclick="switchTab('energy',this)"> Energy & Vitality</button>
+    <button class="tab" data-panel="hormone" onclick="switchTab('hormone',this)">Hormonal Balance</button>
+  </div>
+</div>
+
+<div class="panels">
+
+<div class="panel active" id="panel-sleep">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Sleep</div>
+      <div class="panel-desc">These ingredients support your body's natural sleep rhythms — helping you fall asleep more easily, stay asleep, and wake up feeling restored.</div>
+    </div>
+    <div class="panel-pill">7 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Sleep Onset / Circadian Rhythm</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Melatonin">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?melatonin,nature,plant,herb" alt="Melatonin" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Melatonin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Melatonin</div>
+          <div class="ing-tagline">Your body's natural sleep signal</div>
+          <div class="ing-desc">Melatonin is a hormone your brain already produces at night to signal bedtime. A small supplement dose (0.5 mg) gently reinforces that signal — especially helpful if you struggle to fall asleep, work irregular hours, or travel across time zones. Non-addictive and works with your body's own rhythm.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take prescription sleep medication or sedatives (e.g. Ativan, clonazepam, Zopiclone).</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">0.5–1 mg PM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-L-Theanine">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?l-theanine,nature,plant,herb" alt="L-Theanine" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">L-Theanine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">L-Theanine</div>
+          <div class="ing-tagline">Calms the mind without causing drowsiness</div>
+          <div class="ing-desc">Found naturally in green tea, L-Theanine creates a calm, focused state without sedation. Think of it as a gentle off-switch for an overactive mind — equally useful at bedtime to wind down or during the day to reduce anxious mental chatter.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">200 mg PM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-L-Tryptophan">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?l-tryptophan,nature,plant,herb" alt="L-Tryptophan" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">L-Tryptophan</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">L-Tryptophan</div>
+          <div class="ing-tagline">The amino acid your body converts into sleep hormones</div>
+          <div class="ing-desc">Tryptophan is why a warm glass of milk can make you sleepy — your body converts it into serotonin and then melatonin, your natural sleep hormone. Supplementing at bedtime supports the entire upstream sleep production chain.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Avoid if you take antidepressants (SSRIs, MAOIs, SNRIs such as Prozac, Zoloft, Effexor) due to risk of serotonin syndrome.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg PM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Sleep Maintenance / Cortisol Suppression</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Ashwagandha-1-5-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?ashwagandha,nature,plant,herb" alt="Ashwagandha 1.5%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Ashwagandha</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Ashwagandha 1.5%</div>
+          <div class="ing-tagline">Ancient adaptogen for stress and cortisol balance</div>
+          <div class="ing-desc">Ashwagandha helps your body adapt to stress rather than be overwhelmed by it. Clinical trials show it significantly lowers cortisol (the stress hormone) and reduces anxiety. Unlike stimulants, it recalibrates your stress system over several weeks of use.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take thyroid medication (e.g. Synthroid, levothyroxine) or antidepressants.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">300 mg PM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-GABA">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?gaba,nature,plant,herb" alt="GABA" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">GABA</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">GABA</div>
+          <div class="ing-tagline">Your brain's primary calming neurotransmitter</div>
+          <div class="ing-desc">GABA is the main 'brake' signal in the brain — it quiets overexcited nerve activity. When anxiety strikes, the brain often has too little GABA to restore balance. Supplementing helps settle an overactive nervous system for better sleep and calm.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg PM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Lemon-Balm-5-1">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?lemon,nature,plant,herb" alt="Lemon Balm 5:1" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Lemon</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Lemon Balm 5:1</div>
+          <div class="ing-tagline">A gentle herb for both anxiety and sleeplessness</div>
+          <div class="ing-desc">Lemon balm has been used for centuries to ease restlessness and improve sleep. It works by gently raising GABA levels in the brain — similar in principle to anti-anxiety medications but naturally and without dependence risk.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–600 mg PM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Hops-2-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?hops,nature,plant,herb" alt="Hops 2%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Hops</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Hops 2%</div>
+          <div class="ing-tagline">The sleep herb best known from beer — without the alcohol</div>
+          <div class="ing-desc">Hop flowers contain natural compounds that calm the nervous system and shorten the time to fall asleep. Works especially well combined with lemon balm, where the two together are more effective than either alone.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–500 mg PM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Ferracioli-Oda E et al. PLoS ONE 2013;8(5):e63773. PMID: 23691095. Brzezinski A et al. Sleep Med Rev 2005;9(1):41-50. PMID: 15649737</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Hidese S et al. Nutrients 2019;11(10):2362. PMID: 31623400. DOI: 10.3390/nu11102362</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Sutanto CN et al. Crit Rev Food Sci Nutr 2022;62(13):3549-3562. PMID: 33353026. DOI: 10.1080/10408398.2020.1860619</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Langade D et al. Cureus 2019;11(9):e5797. PMID: 31728244. Chandrasekhar K et al. Indian J Psychol Med 2012;34(3):255-262. PMID: 23439798</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Hepsomali P et al. Front Neurosci 2020;14:923. PMID: 33041752. DOI: 10.3389/fnins.2020.00923</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Cases J et al. Mediterr J Nutr Metab 2011;4(3):211-218. DOI: 10.1007/s12349-010-0045-4. Hieu TH et al. Medicine (Baltimore) 2019;98(10):e14830. PMID: 30855463</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Koetter U et al. Phytother Res 2007;21(9):847-851. PMID: 17562528. DOI: 10.1002/ptr.2167</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-stress">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Stress & Anxiety</div>
+      <div class="panel-desc">From everyday stress to burnout, these ingredients help recalibrate your body's stress response — for greater calm and resilience.</div>
+    </div>
+    <div class="panel-pill">9 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">HPA Axis Recalibration / Cortisol</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Ashwagandha-1-5-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?ashwagandha,nature,plant,herb" alt="Ashwagandha 1.5%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Ashwagandha</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Ashwagandha 1.5%</div>
+          <div class="ing-tagline">Ancient adaptogen for stress and cortisol balance</div>
+          <div class="ing-desc">Ashwagandha helps your body adapt to stress rather than be overwhelmed by it. Clinical trials show it significantly lowers cortisol (the stress hormone) and reduces anxiety. Unlike stimulants, it recalibrates your stress system over several weeks of use.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take thyroid medication (e.g. Synthroid, levothyroxine) or antidepressants.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">600 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Phosphatidylserine">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?phosphatidylserine,nature,plant,herb" alt="Phosphatidylserine" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Phosphatidylse</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Phosphatidylserine</div>
+          <div class="ing-tagline">A brain cell building block that also buffers cortisol</div>
+          <div class="ing-desc">Phosphatidylserine is a natural fat making up a large portion of brain cell membranes. It blunts the cortisol spike triggered by stress, protects memory under pressure, and has a strong track record for cognitive performance as we age.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Holy-Basil-2-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?holy,nature,plant,herb" alt="Holy Basil 2%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Holy</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Holy Basil 2%</div>
+          <div class="ing-tagline">Sacred Ayurvedic herb for calm and clarity</div>
+          <div class="ing-desc">Known as Tulsi in Ayurvedic medicine, holy basil reduces cortisol and inflammatory stress markers. Users typically describe feeling less emotionally reactive — calmer under pressure — without any sedating effect.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–600 mg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Acute GABA-Mediated Calm</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-L-Theanine">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?l-theanine,nature,plant,herb" alt="L-Theanine" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">L-Theanine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">L-Theanine</div>
+          <div class="ing-tagline">Calms the mind without causing drowsiness</div>
+          <div class="ing-desc">Found naturally in green tea, L-Theanine creates a calm, focused state without sedation. Think of it as a gentle off-switch for an overactive mind — equally useful at bedtime to wind down or during the day to reduce anxious mental chatter.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">200–400 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-GABA">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?gaba,nature,plant,herb" alt="GABA" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">GABA</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">GABA</div>
+          <div class="ing-tagline">Your brain's primary calming neurotransmitter</div>
+          <div class="ing-desc">GABA is the main 'brake' signal in the brain — it quiets overexcited nerve activity. When anxiety strikes, the brain often has too little GABA to restore balance. Supplementing helps settle an overactive nervous system for better sleep and calm.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Kava-Kava-30-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?kava,nature,plant,herb" alt="Kava Kava 30%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Kava</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Kava Kava 30%</div>
+          <div class="ing-tagline">Clinically proven herbal anxiety relief</div>
+          <div class="ing-desc">A Cochrane systematic review — the highest standard of medical evidence — confirmed kava significantly reduces anxiety. It acts on the same brain receptors as anti-anxiety medications, but without addiction risk. Effects within an hour.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Do not combine with alcohol or liver-affecting medications. Avoid if you have liver disease.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–250 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Lemon-Balm-5-1">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?lemon,nature,plant,herb" alt="Lemon Balm 5:1" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Lemon</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Lemon Balm 5:1</div>
+          <div class="ing-tagline">A gentle herb for both anxiety and sleeplessness</div>
+          <div class="ing-desc">Lemon balm has been used for centuries to ease restlessness and improve sleep. It works by gently raising GABA levels in the brain — similar in principle to anti-anxiety medications but naturally and without dependence risk.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–600 mg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Burnout & Fatigue Recovery</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Magnolia-2-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?magnolia,nature,plant,herb" alt="Magnolia 2%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Magnolia</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Magnolia 2%</div>
+          <div class="ing-tagline">For when chronic stress has become emotional exhaustion</div>
+          <div class="ing-desc">Magnolia bark compounds reduce cortisol and support serotonin — making it particularly useful for the burned-out, depleted state where stress has become chronic exhaustion. A clinical trial found it reduced cortisol by 18% over four weeks.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">200–400 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-SAMe">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?same,nature,plant,herb" alt="SAMe" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">SAMe</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">SAMe</div>
+          <div class="ing-tagline">Replenishes the neurotransmitters that burnout depletes</div>
+          <div class="ing-desc">SAMe (S-Adenosylmethionine) is what your body uses to produce serotonin, dopamine, and other mood-regulating chemicals. Chronic stress uses these up. SAMe directly restores them — with strong clinical evidence for mood support comparable to certain antidepressants.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Avoid if you take antidepressants (SSRIs, MAOIs, SNRIs) or any psychiatric medication.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">400–800 mg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Bachour B et al. BJPsych Open 2025;11(1):e22. DOI: 10.1192/bjo.2024.833. Chandrasekhar K et al. Indian J Psychol Med 2012;34(3):255. PMID: 23439798</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Monteleone P et al. Neuroendocrinology 1992;55(5):537-542. PMID: 1379748. Benton D et al. Nutr Neurosci 2001;4(3):169-178. PMID: 11842880</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Bhattacharyya D et al. Nepal Med Coll J 2008;10(3):176-179. PMID: 19253862</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Hidese S et al. Nutrients 2019;11(10):2362. PMID: 31623400. Kimura K et al. Biol Psychol 2007;74(1):39-45. PMID: 16930802</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Hepsomali P et al. Front Neurosci 2020;14:923. PMID: 33041752. DOI: 10.3389/fnins.2020.00923</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Pittler MH, Ernst E. Cochrane Database Syst Rev 2003;(1):CD003383. PMID: 12535473. DOI: 10.1002/14651858.CD003383</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Cases J et al. Mediterr J Nutr Metab 2011;4(3):211-218. DOI: 10.1007/s12349-010-0045-4</div>
+      <div class="ref-item"><span class="ref-num">8.</span>Talbott SM et al. J Int Soc Sports Nutr 2013;10(1):37. PMID: 23924268. DOI: 10.1186/1550-2783-10-37</div>
+      <div class="ref-item"><span class="ref-num">9.</span>Papakostas GI et al. Am J Psychiatry 2010;167(8):942-948. PMID: 20595412. Hardy ML et al. Am J Clin Nutr 2003;78(3 Suppl):658S. PMID: 12936955</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-cog">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Cognitive Health</div>
+      <div class="panel-desc">Targeting the specific brain systems that govern memory, focus, and cognitive aging — for sharper thinking at any age.</div>
+    </div>
+    <div class="panel-pill">11 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Long-Term Memory Consolidation</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Bacopa-45-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?bacopa,nature,plant,herb" alt="Bacopa 45%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Bacopa</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Bacopa 45%</div>
+          <div class="ing-tagline">Ayurvedic herb with modern proof for memory</div>
+          <div class="ing-desc">Used as a brain tonic for over 3,000 years, Bacopa is among the most clinically studied herbs for memory. A 2024 double-blind trial confirmed significant improvements in memory and cognitive skills after 12 weeks. Effects build gradually — expect 8–12 weeks for full benefit.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–450 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Phosphatidylserine">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?phosphatidylserine,nature,plant,herb" alt="Phosphatidylserine" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Phosphatidylse</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Phosphatidylserine</div>
+          <div class="ing-tagline">A brain cell building block that also buffers cortisol</div>
+          <div class="ing-desc">Phosphatidylserine is a natural fat making up a large portion of brain cell membranes. It blunts the cortisol spike triggered by stress, protects memory under pressure, and has a strong track record for cognitive performance as we age.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">100–300 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Huperzine-A">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?huperzine,nature,plant,herb" alt="Huperzine A" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Huperzine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Huperzine A</div>
+          <div class="ing-tagline">The most potent natural memory compound available</div>
+          <div class="ing-desc">Derived from a Chinese medicinal moss, Huperzine A prevents breakdown of acetylcholine — the brain's primary learning and memory chemical. It works by the same mechanism as Alzheimer's medications, but naturally. Even at micro-doses, clinical trial results are impressive.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Avoid if you take Alzheimer's or dementia medication (e.g. Aricept, Exelon). Do not combine with cholinergic drugs.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">50–200 mcg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Acute Focus & Attention</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-L-Theanine">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?l-theanine,nature,plant,herb" alt="L-Theanine" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">L-Theanine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">L-Theanine</div>
+          <div class="ing-tagline">Calms the mind without causing drowsiness</div>
+          <div class="ing-desc">Found naturally in green tea, L-Theanine creates a calm, focused state without sedation. Think of it as a gentle off-switch for an overactive mind — equally useful at bedtime to wind down or during the day to reduce anxious mental chatter.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">200 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Alpha-GPC">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?alpha,nature,plant,herb" alt="Alpha GPC" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Alpha</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Alpha GPC</div>
+          <div class="ing-tagline">The fastest-absorbing choline source for focus and learning</div>
+          <div class="ing-desc">Alpha GPC delivers choline — the raw material for acetylcholine, the neurotransmitter responsible for focus and memory. It is the most bioavailable choline form available, entering the brain faster than any other source.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–600 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Citicoline">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?citicoline,nature,plant,herb" alt="Citicoline" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Citicoline</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Citicoline</div>
+          <div class="ing-tagline">A two-in-one: immediate focus and long-term brain structure</div>
+          <div class="ing-desc">Citicoline provides choline for immediate acetylcholine production (focus and learning) and cytidine, which rebuilds brain cell membranes over time. It also increases dopamine receptors, improving motivation and mental drive.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-DMAE">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?dmae,nature,plant,herb" alt="DMAE" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">DMAE</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">DMAE</div>
+          <div class="ing-tagline">Efficient choline precursor for mental clarity and alertness</div>
+          <div class="ing-desc">DMAE crosses into the brain more efficiently than regular choline, supporting acetylcholine production for focus and alertness. Used in clinical settings for cognitive performance with a relatively fast onset.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–600 mg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Neuroprotection & NGF/BDNF</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Lion-s-Mane-40-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?lion's,nature,plant,herb" alt="Lion's Mane 40%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Lion's</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Lion's Mane 40%</div>
+          <div class="ing-tagline">The only food known to stimulate new nerve growth factor</div>
+          <div class="ing-desc">Lion's Mane contains unique compounds (hericenones) that cross into the brain and stimulate Nerve Growth Factor — a protein that helps neurons survive and form new connections. A 2023 trial found improved cognitive performance in healthy adults.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Ginkgo-Biloba-24-6">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?ginkgo,nature,plant,herb" alt="Ginkgo Biloba 24/6" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Ginkgo</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Ginkgo Biloba 24/6</div>
+          <div class="ing-tagline">250 million years old — still among the best for brain blood flow</div>
+          <div class="ing-desc">Ginkgo improves blood flow to the brain, protects neurons from oxidative damage, and reduces brain inflammation. A 2025 analysis of 27 studies ranked Ginkgo-containing formulas top across memory, executive function, and cognitive flexibility.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take blood thinners or anticoagulants (e.g. warfarin, Eliquis, Xarelto, daily aspirin).</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">120–240 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Creatine-Monohydrate">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?creatine,nature,plant,herb" alt="Creatine Monohydrate" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Creatine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Creatine Monohydrate</div>
+          <div class="ing-tagline">Brain fuel — not just for muscles</div>
+          <div class="ing-desc">Neurons use enormous amounts of energy, and creatine replenishes that supply. A 2024 meta-analysis of 16 clinical trials confirmed creatine significantly improves memory and mental processing speed.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">3,000–5,000 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-PQQ">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?pqq,nature,plant,herb" alt="PQQ" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">PQQ</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">PQQ</div>
+          <div class="ing-tagline">The only compound that creates new mitochondria in brain cells</div>
+          <div class="ing-desc">PQQ stimulates the creation of brand-new mitochondria inside cells — including neurons — providing more energy for thinking and focus. Clinical trials show improvements in attention and working memory in middle-aged adults.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">10–20 mg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Eraiah MM et al. J Psychiatry Cogn Behav 2024;8:168. DOI: 10.29011/2574-7762.000068. Kongkeaw C et al. J Ethnopharmacol 2014;151(1):528-535. PMID: 24252493</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Crook TH et al. Neurology 1991;41(5):644-649. PMID: 2027484. DOI: 10.1212/WNL.41.5.644. Duan C et al. Nutrients 2025;17(3):452</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Yang G et al. PLoS ONE 2013;8(9):e74916. PMID: 24205178. DOI: 10.1371/journal.pone.0074916</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Gomez-Ramirez M et al. Clin Neuropharmacol 2007;30(1):25-38. PMID: 17272967. Hidese S et al. Nutrients 2019;11(10):2362</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Kerksick CM et al. Nutrients 2024;16(23):4173. DOI: 10.3390/nu16234173</div>
+      <div class="ref-item"><span class="ref-num">6.</span>McGlade E et al. Food Nutr Sci 2012;3:769-773. DOI: 10.4236/fns.2012.36103. Wignall ND, Brown ES. Ann Clin Psychiatry 2014;26(1):49-55. PMID: 24490218</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Dimpfel W et al. Eur J Med Res 2003;8(5):183-191. PMID: 12765886</div>
+      <div class="ref-item"><span class="ref-num">8.</span>Docherty S et al. Nutrients 2023;15(22):4842. PMID: 38004236. DOI: 10.3390/nu15224842</div>
+      <div class="ref-item"><span class="ref-num">9.</span>Frontiers in Pharmacology 2025;16:1573034. DOI: 10.3389/fphar.2025.1573034</div>
+      <div class="ref-item"><span class="ref-num">10.</span>Xu C et al. Front Nutr 2024;11:1424972. DOI: 10.3389/fnut.2024.1424972. Rae C et al. Proc R Soc Lond B 2003;270(1529):2147-2150. PMID: 14561278</div>
+      <div class="ref-item"><span class="ref-num">11.</span>Itoh Y et al. Funct Foods Health Dis 2016;6(3):169-183. Nakano M et al. Adv Exp Med Biol 2012;154:173-179</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-weight">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Weight Management</div>
+      <div class="panel-desc">Addressing the biology behind weight — blood sugar stability, fat oxidation, appetite signalling, and gut bacteria.</div>
+    </div>
+    <div class="panel-pill">15 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Insulin Sensitivity & Blood Sugar (primary weight drivers)</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Berberine-HCl">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?berberine,nature,plant,herb" alt="Berberine HCl" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Berberine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Berberine HCl</div>
+          <div class="ing-tagline">The natural compound that works like metformin for blood sugar</div>
+          <div class="ing-desc">Berberine activates the same cellular energy switch as the diabetes drug metformin, helping cells absorb glucose more efficiently. A 2025 analysis of 50 clinical trials confirmed it significantly reduces blood sugar, triglycerides, waist circumference, and LDL cholesterol.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take diabetes medication (metformin, insulin, Ozempic), statins, or immunosuppressants. May significantly enhance their effects.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">500 mg with meals</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Gymnema-25-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?gymnema,nature,plant,herb" alt="Gymnema 25%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Gymnema</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Gymnema 25%</div>
+          <div class="ing-tagline">The 'sugar destroyer' that curbs cravings and blunts glucose spikes</div>
+          <div class="ing-desc">Gymnema (which literally means 'sugar destroyer' in Hindi) blocks sugar absorption in the intestines before it hits the bloodstream, and also stimulates the pancreas to release more insulin. The result: gentler blood sugar curves and reduced cravings.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">400–800 mg with meals</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Fenugreek-50-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?fenugreek,nature,plant,herb" alt="Fenugreek 50%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Fenugreek</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Fenugreek 50%</div>
+          <div class="ing-tagline">Slows sugar absorption and naturally supports insulin</div>
+          <div class="ing-desc">Fenugreek contains 4-hydroxyisoleucine, which prompts insulin secretion in response to glucose. Its soluble fibre also slows sugar entry into the bloodstream — together producing measurably gentler post-meal blood sugar curves.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg with meals</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Cinnamon-Extract-20-1">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?cinnamon,nature,plant,herb" alt="Cinnamon Extract 20:1" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Cinnamon</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Cinnamon Extract 20:1</div>
+          <div class="ing-tagline">Your favourite spice at therapeutic potency</div>
+          <div class="ing-desc">We use Ceylon cinnamon at a potent 20:1 extract. Its polyphenols activate insulin receptors in cells, improving their response to glucose even before a meal. A meta-analysis of 10 trials confirmed reductions in fasting blood sugar, cholesterol, and triglycerides.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg with meals</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Fenugreek-50-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?fenugreek,nature,plant,herb" alt="Fenugreek 50%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Fenugreek</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Fenugreek 50%</div>
+          <div class="ing-tagline">Slows sugar absorption and naturally supports insulin</div>
+          <div class="ing-desc">Fenugreek contains 4-hydroxyisoleucine, which prompts insulin secretion in response to glucose. Its soluble fibre also slows sugar entry into the bloodstream — together producing measurably gentler post-meal blood sugar curves.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg with meals</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Thermogenesis & Fat Oxidation</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-EGCG-95-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?egcg,nature,plant,herb" alt="EGCG 95%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">EGCG</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">EGCG 95%</div>
+          <div class="ing-tagline">Green tea's fat-burning compound, concentrated 95%</div>
+          <div class="ing-desc">EGCG prevents breakdown of norepinephrine — the fat-burning hormone — leaving more of it circulating. Our extract is 95% EGCG, far more concentrated than any cup of tea. A meta-analysis confirmed measurable increases in 24-hour energy expenditure.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">200–400 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Carnitine-Tartrate">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?carnitine,nature,plant,herb" alt="Carnitine Tartrate" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Carnitine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Carnitine Tartrate</div>
+          <div class="ing-tagline">The molecule that physically transports fat into your cells' furnaces</div>
+          <div class="ing-desc">L-Carnitine acts like a molecular shuttle, carrying long-chain fatty acids into mitochondria so they can be burned for energy. Without enough carnitine, fat accumulates instead of being oxidised. Nine clinical trials confirm significantly greater weight loss versus placebo.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–2,000 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Coleus-Forskohlii-10-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?coleus,nature,plant,herb" alt="Coleus Forskohlii 10%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Coleus</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Coleus Forskohlii 10%</div>
+          <div class="ing-tagline">Activates the enzyme that unlocks stored body fat</div>
+          <div class="ing-desc">Forskolin triggers a cascade that activates hormone-sensitive lipase — the enzyme that breaks down stored fat for energy. It also stimulates thyroid hormone production, raising basal metabolic rate. A clinical trial found significant reduction in body fat percentage over 12 weeks.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250 mg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Appetite & Satiety</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Glucomannan">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?glucomannan,nature,plant,herb" alt="Glucomannan" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Glucomannan</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Glucomannan</div>
+          <div class="ing-tagline">The fibre that expands in your stomach to create natural fullness</div>
+          <div class="ing-desc">Glucomannan from konjac root absorbs up to 50 times its weight in water, forming a gel that creates genuine physical fullness. It has an authorised health claim from the European Food Safety Authority specifically for weight management.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Take other medications at least 1 hour before or 4 hours after — glucomannan may reduce their absorption if taken simultaneously.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">1,000–3,000 mg before meals</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Inositol">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?inositol,nature,plant,herb" alt="Inositol" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Inositol</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Inositol</div>
+          <div class="ing-tagline">Especially effective for hormonal and insulin-driven weight gain</div>
+          <div class="ing-desc">Inositol improves how cells respond to insulin signals — particularly valuable for women with PCOS or hormonal-driven weight gain, where insulin resistance and elevated androgens make management very difficult. Multiple trials confirm improvements in BMI, insulin sensitivity, and testosterone levels.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">1,000–4,000 mg AM</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Garcinia-Cambogia-60-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?garcinia,nature,plant,herb" alt="Garcinia Cambogia 60%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Garcinia</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Garcinia Cambogia 60%</div>
+          <div class="ing-tagline">Reduces fat storage and curbs appetite</div>
+          <div class="ing-desc">Garcinia's active compound HCA inhibits an enzyme involved in converting carbohydrates to fat, reducing new fat storage. It also increases serotonin, helping reduce appetite and emotional eating. We use a 60% HCA extract.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,500 mg AM</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Microbiome-Mediated Weight Support</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Glucomannan--prebiotic-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?glucomannan,nature,plant,herb" alt="Glucomannan (prebiotic)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Glucomannan</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Glucomannan (prebiotic)</div>
+          <div class="ing-tagline">A clinically studied natural ingredient</div>
+          <div class="ing-desc">Selected based on peer-reviewed clinical evidence.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">As above — also prebiotic</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Inulin--Chicory-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?inulin,nature,plant,herb" alt="Inulin (Chicory)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Inulin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Inulin (Chicory)</div>
+          <div class="ing-tagline">Prebiotic food for the beneficial bacteria in your gut</div>
+          <div class="ing-desc">Inulin from chicory root selectively feeds Bifidobacterium — the beneficial bacteria in your gut. These bacteria produce butyrate, which fuels intestinal cells, reduces inflammation, and strengthens the gut lining. More good bacteria means better immunity and digestion.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">3,000–8,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Psyllium-Husk-Powder">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?psyllium,nature,plant,herb" alt="Psyllium Husk Powder" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Psyllium</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Psyllium Husk Powder</div>
+          <div class="ing-tagline">The gold standard for digestive regularity and cholesterol</div>
+          <div class="ing-desc">Psyllium forms a gentle gel in your digestive tract, normalising bowel movements whether you tend toward constipation or loose stools. It also binds bile acids, reducing cholesterol absorption — earning it an FDA-authorised health claim for heart disease prevention.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Take separately from other medications as it may reduce their absorption.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">5,000–10,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Apple-Pectin">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?apple,nature,plant,herb" alt="Apple Pectin" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Apple</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Apple Pectin</div>
+          <div class="ing-tagline">Soluble fruit fibre that feeds gut bacteria and supports cholesterol</div>
+          <div class="ing-desc">Apple pectin is a soluble fibre that selectively feeds Bifidobacterium, binds bile acids to reduce cholesterol, and slows sugar absorption after meals — a versatile, food-based gut health support ingredient.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">1,000–3,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Liu D et al. Front Pharmacol 2025;16:1572197. DOI: 10.3389/fphar.2025.1572197. Zamani M et al. Front Nutr 2022;9:1013055. DOI: 10.3389/fnut.2022.1013055</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Kanetkar P et al. J Clin Biochem Nutr 2007;41(2):77-81. PMID: 18193099. DOI: 10.3164/jcbn.2007010</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Neelakantan N et al. Nutr J 2014;13:7. PMID: 24438170. DOI: 10.1186/1475-2891-13-7</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Allen RW et al. Ann Fam Med 2013;11(5):452-459. PMID: 24019277. DOI: 10.1370/afm.1517</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Neelakantan N et al. Nutr J 2014;13:7. PMID: 24438170</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Hursel R et al. Int J Obes 2009;33(9):956-961. PMID: 19597519. DOI: 10.1038/ijo.2009.135</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Pooyandjoo M et al. Obes Rev 2016;17(10):970-976. PMID: 27335245. DOI: 10.1111/obr.12436</div>
+      <div class="ref-item"><span class="ref-num">8.</span>Godard MP et al. Obes Res 2005;13(8):1335-1343. PMID: 16129715. DOI: 10.1038/oby.2005.162</div>
+      <div class="ref-item"><span class="ref-num">9.</span>Keithley JK, Swanson B. Altern Ther Health Med 2005;11(6):30-34. PMID: 16320857. EFSA J 2010;8(10):1798</div>
+      <div class="ref-item"><span class="ref-num">10.</span>Unfer V et al. Gynecol Endocrinol 2016;32(7):509-518. PMID: 27307386. DOI: 10.3109/09513590.2016.1146267</div>
+      <div class="ref-item"><span class="ref-num">11.</span>Onakpoya I et al. J Obes 2011;2011:509038. PMID: 21197150. DOI: 10.1155/2011/509038</div>
+      <div class="ref-item"><span class="ref-num">12.</span>Chua M et al. Mol Nutr Food Res 2010;54(Suppl 1):S59-65. PMID: 20112290. DOI: 10.1002/mnfr.200900249</div>
+      <div class="ref-item"><span class="ref-num">13.</span>Roberfroid MB et al. Br J Nutr 2010;104(Suppl 2):S1-63. PMID: 20920376. DOI: 10.1017/S0007114510003363</div>
+      <div class="ref-item"><span class="ref-num">14.</span>Anderson JW et al. Am J Clin Nutr 1999;71(2):472-479. PMID: 10075331. DOI: 10.1093/ajcn/71.2.472</div>
+      <div class="ref-item"><span class="ref-num">15.</span>Brownlee IA. Proc Nutr Soc 2011;70(4):449-456. PMID: 21929831. DOI: 10.1017/S0029665111000681</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-gut">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Gut & Digestive Health</div>
+      <div class="panel-desc">Supporting digestive comfort, microbiome balance, and liver health — the foundation of overall wellbeing.</div>
+    </div>
+    <div class="panel-pill">8 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Digestive Enzymes</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Bromelain-2-400-GDU-g">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?bromelain,nature,plant,herb" alt="Bromelain 2,400 GDU/g" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Bromelain</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Bromelain 2,400 GDU/g</div>
+          <div class="ing-tagline">Pineapple's powerful digestive and anti-inflammatory enzyme</div>
+          <div class="ing-desc">Bromelain is a protein-digesting enzyme from pineapple. With meals it reduces bloating and improves protein breakdown. Between meals on an empty stomach, it has a systemic anti-inflammatory effect throughout the body.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take blood thinners or anticoagulants (e.g. warfarin, aspirin, Eliquis).</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg between meals</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Betaine-HCl">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?betaine,nature,plant,herb" alt="Betaine HCl" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Betaine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Betaine HCl</div>
+          <div class="ing-tagline">Restores stomach acid to the levels digestion actually requires</div>
+          <div class="ing-desc">Many people have below-optimal stomach acid, especially with age — leading to bloating, poor protein digestion, and nutrient deficiencies. Betaine HCl gently restores acidity, activating digestive enzymes and improving absorption of B12, iron, and calcium.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Do not use if you have a stomach ulcer, GERD, or take acid-suppressing medication (e.g. omeprazole, Nexium). Start at lowest dose.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">650–1,300 mg with meals</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Prebiotic & Gut Microbiome</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Inulin--Chicory-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?inulin,nature,plant,herb" alt="Inulin (Chicory)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Inulin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Inulin (Chicory)</div>
+          <div class="ing-tagline">Prebiotic food for the beneficial bacteria in your gut</div>
+          <div class="ing-desc">Inulin from chicory root selectively feeds Bifidobacterium — the beneficial bacteria in your gut. These bacteria produce butyrate, which fuels intestinal cells, reduces inflammation, and strengthens the gut lining. More good bacteria means better immunity and digestion.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">3,000–8,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-FOS">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?fos,nature,plant,herb" alt="FOS" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">FOS</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">FOS</div>
+          <div class="ing-tagline">Short-chain prebiotics that rapidly nourish your gut bacteria</div>
+          <div class="ing-desc">Fructooligosaccharides (FOS) resist digestion and reach the colon intact, where they selectively feed Bifidobacterium. They ferment quickly, producing short-chain fatty acids including butyrate, and also enhance calcium absorption.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">3,000–8,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Psyllium-Husk-Powder">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?psyllium,nature,plant,herb" alt="Psyllium Husk Powder" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Psyllium</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Psyllium Husk Powder</div>
+          <div class="ing-tagline">The gold standard for digestive regularity and cholesterol</div>
+          <div class="ing-desc">Psyllium forms a gentle gel in your digestive tract, normalising bowel movements whether you tend toward constipation or loose stools. It also binds bile acids, reducing cholesterol absorption — earning it an FDA-authorised health claim for heart disease prevention.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Take separately from other medications as it may reduce their absorption.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">5,000–10,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Liver & Detox</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Milk-Thistle-80-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?milk,nature,plant,herb" alt="Milk Thistle 80%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Milk</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Milk Thistle 80%</div>
+          <div class="ing-tagline">The liver's most clinically validated protector</div>
+          <div class="ing-desc">Milk thistle's active compound silymarin stabilises liver cell membranes against toxin entry, and stimulates production of new liver cells to replace damaged ones. Cochrane reviews consistently confirm improved liver enzyme levels.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">150–420 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Artichoke-5-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?artichoke,nature,plant,herb" alt="Artichoke 5%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Artichoke</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Artichoke 5%</div>
+          <div class="ing-tagline">Stimulates bile flow for better fat digestion and cholesterol clearance</div>
+          <div class="ing-desc">Artichoke leaf extract stimulates the liver to produce more bile — needed to break down dietary fats and absorb fat-soluble vitamins. More bile flow means better fat digestion and lower cholesterol absorption. A clinical trial found nearly 19 mg/dl reduction in total cholesterol within six weeks.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">320–640 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Dandelion-Root-4-1">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?dandelion,nature,plant,herb" alt="Dandelion Root 4:1" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Dandelion</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Dandelion Root 4:1</div>
+          <div class="ing-tagline">A traditional liver tonic with gentle detoxifying properties</div>
+          <div class="ing-desc">Dandelion root stimulates bile production, contains prebiotic inulin for gut bacteria, and provides mild anti-inflammatory phenolic acids. A gentle, food-based approach to daily liver and digestive support.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Brien S et al. Evid Based Complement Alternat Med 2004;1(3):251-257. PMID: 15841258. DOI: 10.1093/ecam/neh035</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Yago MR et al. Mol Pharm 2013;10(11):4032-4037. PMID: 24011025. DOI: 10.1021/mp4003738</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Roberfroid MB et al. Br J Nutr 2010;104(Suppl 2):S1-63. PMID: 20920376. DOI: 10.1017/S0007114510003363</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Roberfroid MB et al. Br J Nutr 2010;104(Suppl 2):S1-63. PMID: 20920376</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Anderson JW et al. Am J Clin Nutr 1999;71(2):472-479. PMID: 10075331</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Rambaldi A et al. Cochrane Database Syst Rev 2007;(4):CD003620. PMID: 17943794. DOI: 10.1002/14651858.CD003620.pub3</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Bundy R et al. Phytomedicine 2004;11(4):338-347. PMID: 15253898. DOI: 10.1016/j.phymed.2003.11.004</div>
+      <div class="ref-item"><span class="ref-num">8.</span>González-Castejón M et al. Nutr Rev 2012;70(9):534-547. PMID: 22946853. DOI: 10.1111/j.1753-4887.2012.00509.x</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-immune">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Immune & Antioxidant</div>
+      <div class="panel-desc">Strengthening immune defences and protecting cells from the oxidative damage that accelerates aging.</div>
+    </div>
+    <div class="panel-pill">11 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Immune Modulation</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Beta-1-3-Glucans">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?beta-1,3-glucans,nature,plant,herb" alt="Beta-1,3-Glucans" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Beta-1,3-Gluca</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Beta-1,3-Glucans</div>
+          <div class="ing-tagline">Puts your immune cells on high alert without triggering inflammation</div>
+          <div class="ing-desc">Beta-glucans from fungal cell walls bind directly to immune cells (macrophages and NK cells), activating them into a heightened state of readiness — increasing the speed and effectiveness of your immune response.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Echinacea-Angustifolia-4-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?echinacea,nature,plant,herb" alt="Echinacea Angustifolia 4%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Echinacea</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Echinacea Angustifolia 4%</div>
+          <div class="ing-tagline">Reduces how often you get sick and how long it lasts</div>
+          <div class="ing-desc">A meta-analysis of 14 randomised controlled trials found echinacea reduced cold incidence by 58% and shortened duration by 1.4 days. We use the Angustifolia species, which has the highest concentration of active alkylamide compounds.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Astragalus-0-4-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?astragalus,nature,plant,herb" alt="Astragalus 0.4%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Astragalus</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Astragalus 0.4%</div>
+          <div class="ing-tagline">Traditional Chinese herb that activates T-cells and NK cells</div>
+          <div class="ing-desc">Used in Chinese medicine for over 2,000 years, astragalus polysaccharides activate T-lymphocytes, NK cells, and interferon production — three pillars of the adaptive immune system. As a bonus, it also activates telomerase, supporting cellular longevity.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Reishi-Mycelia">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?reishi,nature,plant,herb" alt="Reishi Mycelia" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Reishi</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Reishi Mycelia</div>
+          <div class="ing-tagline">The mushroom of immortality — uniquely balances the immune system</div>
+          <div class="ing-desc">Reishi uniquely both activates immune cells when defence is needed and calms excessive immune responses — valuable for low immunity and inflammatory conditions alike. Clinical studies confirm it significantly increases NK cell activity.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Cordyceps-16-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?cordyceps,nature,plant,herb" alt="Cordyceps 16%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Cordyceps</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Cordyceps 16%</div>
+          <div class="ing-tagline">The endurance mushroom that improves oxygen efficiency and immunity</div>
+          <div class="ing-desc">Cordyceps increases VO2max (how efficiently you use oxygen) and enhances NK cell activity. Clinical trials in elderly adults show significant improvements in energy, immunity, and exercise tolerance.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Antioxidant Defence</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Quercetin-95-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?quercetin,nature,plant,herb" alt="Quercetin 95%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Quercetin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Quercetin 95%</div>
+          <div class="ing-tagline">Nature's most powerful anti-inflammatory flavonoid</div>
+          <div class="ing-desc">Quercetin is the active compound behind much of the anti-inflammatory benefit in apples, onions, and berries. At 95% standardised extract, it significantly reduces CRP and IL-6 inflammatory markers. It also acts as a zinc ionophore, enhancing antiviral defence.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Grapeseed-Extract-95-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?grapeseed,nature,plant,herb" alt="Grapeseed Extract 95%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Grapeseed</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Grapeseed Extract 95%</div>
+          <div class="ing-tagline">20× stronger than Vitamin C for vascular and antioxidant protection</div>
+          <div class="ing-desc">Grapeseed OPCs are among the most potent plant antioxidants. They protect collagen from enzyme-driven breakdown, strengthen capillary walls, improve circulation, and reduce blood pressure. Nine clinical trials confirm significant systolic BP reduction.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">100–300 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Resveratrol-50-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?resveratrol,nature,plant,herb" alt="Resveratrol 50%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Resveratrol</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Resveratrol 50%</div>
+          <div class="ing-tagline">Activates the longevity genes linked to red wine's benefits</div>
+          <div class="ing-desc">Resveratrol activates SIRT1 — a longevity gene governing DNA repair, inflammation, and metabolic efficiency — and also activates AMPK, the same pathway as berberine and metformin. Clinical trials confirm improvements in blood sugar, cholesterol, and arterial function.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">150–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Astaxanthin">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?astaxanthin,nature,plant,herb" alt="Astaxanthin" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Astaxanthin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Astaxanthin</div>
+          <div class="ing-tagline">The world's most potent antioxidant by a significant margin</div>
+          <div class="ing-desc">Astaxanthin is 6,000 times stronger than Vitamin C as an antioxidant. Unlike most antioxidants, it crosses both the blood-brain barrier and the blood-retinal barrier, protecting the brain, eyes, and skin simultaneously. Clinical trials confirm significant improvements in skin wrinkles, elasticity, and UV protection.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">4–12 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-CoQ10--Ubiquinol-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?coq10,nature,plant,herb" alt="CoQ10 (Ubiquinol)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">CoQ10</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">CoQ10 (Ubiquinol)</div>
+          <div class="ing-tagline">Essential cellular energy compound — especially critical on statins</div>
+          <div class="ing-desc">CoQ10 is found in the mitochondria of every cell, where it is essential for ATP production. Your heart has the highest concentration of any organ. Statin medications significantly deplete CoQ10 as a side effect. We use the ubiquinol form — the biologically active, reduced version up to 8× better absorbed than standard CoQ10.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>If you take statin medication (e.g. Lipitor, Crestor), CoQ10 supplementation is especially recommended as statins deplete CoQ10 levels.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-NAC--N-Acetyl-Cysteine-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?nac,nature,plant,herb" alt="NAC (N-Acetyl Cysteine)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">NAC</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">NAC (N-Acetyl Cysteine)</div>
+          <div class="ing-tagline">Replenishes glutathione — the body's master antioxidant</div>
+          <div class="ing-desc">NAC is the direct precursor to glutathione, the most important antioxidant your body produces internally. It scavenges harmful free radicals, reduces NF-κB inflammation, and supports liver detoxification. One of the most validated antioxidant supplements in medicine.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">600–1,200 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Vetvicka V, Vetvickova J. Ann Transl Med 2015;3(2):16. PMID: 25738143. DOI: 10.3978/j.issn.2305-5839.2015.01.05</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Shah SA et al. Lancet Infect Dis 2007;7(7):473-480. PMID: 17597571. DOI: 10.1016/S1473-3099(07)70160-3</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Block KI, Mead MN. Integr Cancer Ther 2003;2(3):247-267. PMID: 15035900. DOI: 10.1177/1534735403256553</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Jin X et al. PLoS ONE 2012;7(8):e42310. PMID: 22879916. DOI: 10.1371/journal.pone.0042310</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Panda AK, Swain KC. Afr J Pharm Pharmacol 2011;5(1):9-15. DOI: 10.5897/AJPP10.026</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Hosseinpour-Niazi S et al. J Am Diet Assoc 2015. DOI: 10.1016/j.jand.2014.10.020</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Feringa HH et al. J Am Diet Assoc 2011;111(8):1173-1181. PMID: 21802563. DOI: 10.1016/j.jada.2011.05.015</div>
+      <div class="ref-item"><span class="ref-num">8.</span>Liu Y et al. Am J Clin Nutr 2014;99(6):1514-1521. PMID: 24695890. DOI: 10.3945/ajcn.113.082024</div>
+      <div class="ref-item"><span class="ref-num">9.</span>Tominaga K et al. Acta Biochim Pol 2012;59(1):43-47. PMID: 22428137</div>
+      <div class="ref-item"><span class="ref-num">10.</span>Zozina VI et al. Front Pharmacol 2018;9:587. PMID: 29950994. DOI: 10.3389/fphar.2018.00587</div>
+      <div class="ref-item"><span class="ref-num">11.</span>Samuni Y et al. Biochim Biophys Acta 2013;1830(8):4117-4129. PMID: 23618697. DOI: 10.1016/j.bbagen.2013.04.016</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-joint">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Joint & Bone Health</div>
+      <div class="panel-desc">Providing anti-inflammatory support and the raw materials your joints and bones need to stay strong.</div>
+    </div>
+    <div class="panel-pill">7 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Joint Support</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Boswellia-Serrata-65-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?boswellia,nature,plant,herb" alt="Boswellia Serrata 65%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Boswellia</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Boswellia Serrata 65%</div>
+          <div class="ing-tagline">Powerful joint anti-inflammatory without stomach side effects</div>
+          <div class="ing-desc">Boswellia resin's active compound AKBA is among the most potent natural anti-inflammatory agents known, shutting down the 5-lipoxygenase enzyme responsible for joint inflammation. Unlike NSAIDs, it doesn't cause stomach ulcers and can be used long-term. Pain relief typically begins within 5–7 days.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Glucosamine-Sulfate--K-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?glucosamine,nature,plant,herb" alt="Glucosamine Sulfate (K)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Glucosamine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Glucosamine Sulfate (K)</div>
+          <div class="ing-tagline">The raw material cartilage uses to repair and maintain itself</div>
+          <div class="ing-desc">Glucosamine is a natural compound in your cartilage. Supplementing provides the building blocks for cartilage maintenance and repair. A 3-year clinical trial found it actually slowed joint space narrowing over time — not just masking pain, but potentially slowing deterioration.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Contains potassium. Consult your doctor if you have kidney disease or a potassium-restricted diet.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">1,500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Chondroitin-Sulfate-85-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?chondroitin,nature,plant,herb" alt="Chondroitin Sulfate 85%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Chondroitin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Chondroitin Sulfate 85%</div>
+          <div class="ing-tagline">Keeps cartilage hydrated and prevents enzyme-driven degradation</div>
+          <div class="ing-desc">Chondroitin attracts water into cartilage, keeping it cushioning and resilient, while inhibiting the enzymes that break cartilage down. Combined with glucosamine, it performed equivalently to the prescription anti-inflammatory celecoxib in a major clinical trial.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">800–1,200 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-MSM">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?msm,nature,plant,herb" alt="MSM" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">MSM</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">MSM</div>
+          <div class="ing-tagline">Bioavailable sulfur for joints, tendons, and connective tissue</div>
+          <div class="ing-desc">Sulfur is the third most abundant mineral in the body and essential for collagen, cartilage, and connective tissue synthesis. MSM is the most bioavailable dietary form of sulfur. It also has direct anti-inflammatory properties — often why people feel better after mineral spring baths.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">1,000–3,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Bone Health</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Vitamin-D3">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?vitamin,nature,plant,herb" alt="Vitamin D3" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Vitamin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Vitamin D3</div>
+          <div class="ing-tagline">Essential for calcium absorption — deficient in most Canadians</div>
+          <div class="ing-desc">Vitamin D3 controls how much calcium your intestines absorb. Without it, most dietary calcium passes through unused. Deficiency is extremely common in Canada's northern climate. Beyond bone health, it is critical for immune function, muscle strength, and mood.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">1,000–4,000 IU daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Vitamin-K2--MK7-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?vitamin,nature,plant,herb" alt="Vitamin K2 (MK7)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Vitamin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Vitamin K2 (MK7)</div>
+          <div class="ing-tagline">Directs calcium into bones rather than arteries</div>
+          <div class="ing-desc">Vitamin K2 activates osteocalcin (which binds calcium into bone) and matrix GLA protein (which removes calcium from artery walls). This ensures calcium goes where you want it — bones — and not where you don't — arteries. The MK-7 form has a 72+ hour half-life for effective once-daily dosing.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take warfarin (Coumadin) or other anticoagulants. May affect blood clotting time.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mcg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Bamboo-70--silica">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?bamboo,nature,plant,herb" alt="Bamboo 70% silica" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Bamboo</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Bamboo 70% silica</div>
+          <div class="ing-tagline">Plant silica for stronger bones, hair, and nails</div>
+          <div class="ing-desc">Silica from bamboo integrates into collagen cross-links and keratin fibres, strengthening both. It stimulates type I procollagen synthesis. Clinical trials show improvements in hair tensile strength and nail brittleness over several months of consistent use.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Majeed M et al. J Clin Rheumatol 2019;25(6):e66-e70. PMID: 30985491. DOI: 10.1097/RHU.0000000000000919</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Towheed TE et al. Cochrane Database 2005;(2):CD002946. PMID: 15846645. DOI: 10.1002/14651858.CD002946.pub2</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Hochberg MC et al. Ann Rheum Dis 2016;75(1):37-44. PMID: 26474833. DOI: 10.1136/annrheumdis-2014-206836</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Brien S et al. Osteoarthr Cartilage 2008;16(11):1277-1288. PMID: 18583156. DOI: 10.1016/j.joca.2008.03.002</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Reid IR et al. J Intern Med 2014;275(3):254-263. PMID: 24215272. DOI: 10.1111/joim.12194</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Knapen MH et al. Osteoporos Int 2013;24(9):2499-2507. PMID: 23525894. DOI: 10.1007/s00198-013-2325-6</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Wickett RR et al. Arch Dermatol Res 2007;299(10):499-505. PMID: 17960402. DOI: 10.1007/s00403-007-0796-z</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-cardio">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Cardiovascular Health</div>
+      <div class="panel-desc">Supporting healthy cholesterol levels, blood pressure, circulation, and the cellular energy your heart depends on.</div>
+    </div>
+    <div class="panel-pill">5 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Lipid & Vascular Support</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-CoQ10--Ubiquinol-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?coq10,nature,plant,herb" alt="CoQ10 (Ubiquinol)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">CoQ10</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">CoQ10 (Ubiquinol)</div>
+          <div class="ing-tagline">Essential cellular energy compound — especially critical on statins</div>
+          <div class="ing-desc">CoQ10 is found in the mitochondria of every cell, where it is essential for ATP production. Your heart has the highest concentration of any organ. Statin medications significantly deplete CoQ10 as a side effect. We use the ubiquinol form — the biologically active, reduced version up to 8× better absorbed than standard CoQ10.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>If you take statin medication (e.g. Lipitor, Crestor), CoQ10 supplementation is especially recommended as statins deplete CoQ10 levels.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Nattokinase-20-000-FU-g">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?nattokinase,nature,plant,herb" alt="Nattokinase 20,000 FU/g" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Nattokinase</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Nattokinase 20,000 FU/g</div>
+          <div class="ing-tagline">A natural enzyme that directly dissolves fibrin clots</div>
+          <div class="ing-desc">Nattokinase from fermented soybeans directly dissolves fibrin — the protein that forms blood clots — reducing blood viscosity and arterial stiffness. Unlike most cardiovascular supplements that work indirectly, its action is direct. A clinical trial confirmed significant reductions in blood pressure and fibrinogen.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Do not take if you use blood thinners or anticoagulants (e.g. warfarin, Eliquis, Xarelto, daily aspirin). Significant blood-thinning effect.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mg (2,000 FU) daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Hawthorn-1-8-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?hawthorn,nature,plant,herb" alt="Hawthorn 1.8%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Hawthorn</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Hawthorn 1.8%</div>
+          <div class="ing-tagline">The heart herb with the deepest clinical evidence base</div>
+          <div class="ing-desc">A Cochrane review of 14 randomised controlled trials found hawthorn extract significantly improved exercise tolerance and reduced cardiac symptoms. It dilates coronary arteries, reduces blood pressure via ACE inhibition, and provides antioxidant protection of vascular walls.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">300–900 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Red-Yeast-Rice--Ankascin-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?red,nature,plant,herb" alt="Red Yeast Rice (Ankascin)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Red</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Red Yeast Rice (Ankascin)</div>
+          <div class="ing-tagline">Natural cholesterol reduction — with the mycotoxin removed</div>
+          <div class="ing-desc">Red yeast rice contains Monacolin K — naturally occurring lovastatin — which inhibits the same enzyme targeted by statin drugs. We use the Ankascin 568-R strain, verified to be free of citrinin, a mycotoxin found in lower-quality products.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Consult your doctor if you take statin cholesterol medication — additive effect. Monitor liver enzymes with long-term use.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">600–1,200 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Resveratrol-50-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?resveratrol,nature,plant,herb" alt="Resveratrol 50%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Resveratrol</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Resveratrol 50%</div>
+          <div class="ing-tagline">Activates the longevity genes linked to red wine's benefits</div>
+          <div class="ing-desc">Resveratrol activates SIRT1 — a longevity gene governing DNA repair, inflammation, and metabolic efficiency — and also activates AMPK, the same pathway as berberine and metformin. Clinical trials confirm improvements in blood sugar, cholesterol, and arterial function.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">150–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>DiNicolantonio JJ et al. Open Heart 2015;2(1):e000326. PMID: 26512330. DOI: 10.1136/openhrt-2015-000326</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Kim JY et al. Hypertens Res 2008;31(8):1583-1588. PMID: 18971533. DOI: 10.1291/hypres.31.1583</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Pittler MH et al. Cochrane Database Syst Rev 2008;(1):CD005312. PMID: 18254076. DOI: 10.1002/14651858.CD005312.pub2</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Liu J et al. Am J Chin Med 2006;34(6):905-913. PMID: 17163578. DOI: 10.1142/S0192415X06004454</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Liu Y et al. Am J Clin Nutr 2014;99(6):1514-1521. PMID: 24695890</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-skin">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Skin, Hair & Nails</div>
+      <div class="panel-desc">Working at the cellular level to stimulate collagen, hydrate skin from within, and strengthen hair and nails.</div>
+    </div>
+    <div class="panel-pill">8 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Collagen Synthesis & Skin Structure</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Fish-Collagen--hydrolyzed-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?fish,nature,plant,herb" alt="Fish Collagen (hydrolyzed)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Fish</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Fish Collagen (hydrolyzed)</div>
+          <div class="ing-tagline">Bioactive peptides that signal your skin to rebuild from within</div>
+          <div class="ing-desc">Hydrolyzed fish collagen produces specific peptides (Pro-Hyp, Hyp-Gly) that signal skin fibroblast cells to produce new collagen and hyaluronic acid. A meta-analysis of 23 clinical trials with nearly 1,500 participants confirmed significant improvements in skin hydration, elasticity, and wrinkle depth.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">2,500–5,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Bovine-Hydrolyzed-Collagen">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?bovine,nature,plant,herb" alt="Bovine Hydrolyzed Collagen" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Bovine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Bovine Hydrolyzed Collagen</div>
+          <div class="ing-tagline">The most extensively studied oral collagen for skin and connective tissue</div>
+          <div class="ing-desc">Bovine hydrolyzed collagen provides both Type I and III collagen peptides — the most important structural types for skin, tendons, and bone. A landmark clinical trial found 20%+ wrinkle volume reduction after just 8 weeks at the dose we use.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">2,500–5,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Hyaluronic-Acid">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?hyaluronic,nature,plant,herb" alt="Hyaluronic Acid" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Hyaluronic</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Hyaluronic Acid</div>
+          <div class="ing-tagline">Oral HA hydrates skin from deep within the dermis</div>
+          <div class="ing-desc">Low molecular weight oral hyaluronic acid crosses into the bloodstream and deposits in the skin's dermal layers, where it can hold up to 1,000 times its weight in water. Clinical trials confirm significant improvements in skin moisture and wrinkle reduction within 12 weeks.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">80–200 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-MSM">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?msm,nature,plant,herb" alt="MSM" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">MSM</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">MSM</div>
+          <div class="ing-tagline">Bioavailable sulfur for joints, tendons, and connective tissue</div>
+          <div class="ing-desc">Sulfur is the third most abundant mineral in the body and essential for collagen, cartilage, and connective tissue synthesis. MSM is the most bioavailable dietary form of sulfur. It also has direct anti-inflammatory properties — often why people feel better after mineral spring baths.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">1,000–3,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Astaxanthin">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?astaxanthin,nature,plant,herb" alt="Astaxanthin" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Astaxanthin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Astaxanthin</div>
+          <div class="ing-tagline">The world's most potent antioxidant by a significant margin</div>
+          <div class="ing-desc">Astaxanthin is 6,000 times stronger than Vitamin C as an antioxidant. Unlike most antioxidants, it crosses both the blood-brain barrier and the blood-retinal barrier, protecting the brain, eyes, and skin simultaneously. Clinical trials confirm significant improvements in skin wrinkles, elasticity, and UV protection.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">4–12 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Hair & Nails</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Biotin-100-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?biotin,nature,plant,herb" alt="Biotin 100%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Biotin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Biotin 100%</div>
+          <div class="ing-tagline">The B-vitamin that hair and nails are built with</div>
+          <div class="ing-desc">Biotin is an essential cofactor for the enzymes that synthesise keratin — the structural protein of hair, nails, and skin. Most effective for people with brittle nails or hair quality issues. Important: high-dose biotin can interfere with certain lab tests — inform your doctor before blood work.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>High-dose biotin (5,000 mcg) can interfere with thyroid function and cardiac troponin lab tests. Always inform your doctor and lab if you supplement biotin before blood work.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">2,500–5,000 mcg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Bamboo-70--silica">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?bamboo,nature,plant,herb" alt="Bamboo 70% silica" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Bamboo</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Bamboo 70% silica</div>
+          <div class="ing-tagline">Plant silica for stronger bones, hair, and nails</div>
+          <div class="ing-desc">Silica from bamboo integrates into collagen cross-links and keratin fibres, strengthening both. It stimulates type I procollagen synthesis. Clinical trials show improvements in hair tensile strength and nail brittleness over several months of consistent use.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">100–300 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Sebum & Acne Regulation</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-DIM--Diindolylmethane-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?dim,nature,plant,herb" alt="DIM (Diindolylmethane)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">DIM</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">DIM (Diindolylmethane)</div>
+          <div class="ing-tagline">Guides estrogen down the healthier metabolic pathway</div>
+          <div class="ing-desc">DIM, found in cruciferous vegetables, shifts estrogen metabolism toward the protective 2-OH pathway. This makes it valuable for women with PMS, hormonal acne, or perimenopausal symptoms — it doesn't change estrogen levels, it improves how estrogen is processed.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Avoid if you have hormone-sensitive cancer (e.g. ER-positive breast cancer) or are on hormone therapy (tamoxifen, letrozole). Consult your doctor if you take thyroid medication.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>de Miranda RB et al. J Cosmet Dermatol 2021;20(4):1072-1080. PMID: 33742704. DOI: 10.1111/jocd.13097</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Proksch E et al. Skin Pharmacol Physiol 2014;27(3):113-119. PMID: 24401291. DOI: 10.1159/000355523</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Oe M et al. Nutr J 2017;16(1):11. PMID: 28219351. DOI: 10.1186/s12937-017-0224-0</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Barmaki S et al. Dermatol Surg 2012. DOI: 10.1111/j.1524-4725.2012.02479.x</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Tominaga K et al. Acta Biochim Pol 2012;59(1):43-47. PMID: 22428137</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Soleymani T et al. Skin Appendage Disord 2017;3(3):166-169. PMID: 28879195. DOI: 10.1159/000477648</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Wickett RR et al. Arch Dermatol Res 2007;299(10):499-505. PMID: 17960402</div>
+      <div class="ref-item"><span class="ref-num">8.</span>Thomson CA et al. Breast Cancer Res Treat 2017;165(1):97-107. PMID: 28577051. DOI: 10.1007/s10549-017-4297-3</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-energy">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Energy & Vitality</div>
+      <div class="panel-desc">Supporting healthy mitochondria and the B-vitamin cofactors that keep your energy production running efficiently.</div>
+    </div>
+    <div class="panel-pill">9 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Cellular Energy Production</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-CoQ10--Ubiquinol-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?coq10,nature,plant,herb" alt="CoQ10 (Ubiquinol)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">CoQ10</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">CoQ10 (Ubiquinol)</div>
+          <div class="ing-tagline">Essential cellular energy compound — especially critical on statins</div>
+          <div class="ing-desc">CoQ10 is found in the mitochondria of every cell, where it is essential for ATP production. Your heart has the highest concentration of any organ. Statin medications significantly deplete CoQ10 as a side effect. We use the ubiquinol form — the biologically active, reduced version up to 8× better absorbed than standard CoQ10.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>If you take statin medication (e.g. Lipitor, Crestor), CoQ10 supplementation is especially recommended as statins deplete CoQ10 levels.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–300 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Creatine-Monohydrate">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?creatine,nature,plant,herb" alt="Creatine Monohydrate" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Creatine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Creatine Monohydrate</div>
+          <div class="ing-tagline">Brain fuel — not just for muscles</div>
+          <div class="ing-desc">Neurons use enormous amounts of energy, and creatine replenishes that supply. A 2024 meta-analysis of 16 clinical trials confirmed creatine significantly improves memory and mental processing speed.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">3,000–5,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-NMN">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?nmn,nature,plant,herb" alt="NMN" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">NMN</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">NMN</div>
+          <div class="ing-tagline">Restores cellular energy levels that decline significantly with age</div>
+          <div class="ing-desc">NAD+ is required by every cell to produce energy — and levels drop up to 50% between ages 40 and 60. NMN is the most efficient precursor for restoring NAD+. Higher NAD+ activates sirtuins, proteins that govern cellular repair and biological aging processes.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-NR--Nicotinamide-Riboside-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?nr,nature,plant,herb" alt="NR (Nicotinamide Riboside)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">NR</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">NR (Nicotinamide Riboside)</div>
+          <div class="ing-tagline">Well-validated NAD+ precursor for cellular energy and longevity</div>
+          <div class="ing-desc">NR raises NAD+ levels via a slightly different pathway than NMN. Clinical trials confirm it significantly increases muscle NAD+ and reduces arterial stiffness. It currently has more published clinical trial data than NMN.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-NADH">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?nadh,nature,plant,herb" alt="NADH" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">NADH</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">NADH</div>
+          <div class="ing-tagline">The activated form of Vitamin B3 — direct mitochondrial fuel</div>
+          <div class="ing-desc">NADH is Vitamin B3 in its active, energy-carrying form. It directly fuels mitochondrial ATP production and supports synthesis of dopamine, norepinephrine, and serotonin. Clinical trials confirm benefits for fatigue and cognitive function.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">5–20 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Cordyceps-16-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?cordyceps,nature,plant,herb" alt="Cordyceps 16%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Cordyceps</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Cordyceps 16%</div>
+          <div class="ing-tagline">The endurance mushroom that improves oxygen efficiency and immunity</div>
+          <div class="ing-desc">Cordyceps increases VO2max (how efficiently you use oxygen) and enhances NK cell activity. Clinical trials in elderly adults show significant improvements in energy, immunity, and exercise tolerance.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–1,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">B-Vitamin Energy Cofactors</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Vitamin-B12--Methylcobalamin-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?vitamin,nature,plant,herb" alt="Vitamin B12 (Methylcobalamin)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Vitamin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Vitamin B12 (Methylcobalamin)</div>
+          <div class="ing-tagline">The most common vitamin deficiency with the most impactful correction</div>
+          <div class="ing-desc">B12 deficiency affects an estimated 20–40% of adults, often silently causing fatigue, brain fog, mood changes, and nerve damage over time. Vegetarians and vegans are especially at risk. We use methylcobalamin — the neurologically active form — rather than cheaper cyanocobalamin.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">500–2,000 mcg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Vitamin-B6--P5P-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?vitamin,nature,plant,herb" alt="Vitamin B6 (P5P)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Vitamin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Vitamin B6 (P5P)</div>
+          <div class="ing-tagline">Active B6 that powers serotonin, dopamine, and GABA synthesis</div>
+          <div class="ing-desc">Vitamin B6 is a cofactor in over 100 enzyme reactions, including synthesis of the key neurotransmitters serotonin, dopamine, and GABA. We use P5P (pyridoxal-5-phosphate) — the biologically active form your body can use immediately.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">25–100 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Vitamin-B5--Pantethine-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?vitamin,nature,plant,herb" alt="Vitamin B5 (Pantethine)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Vitamin</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Vitamin B5 (Pantethine)</div>
+          <div class="ing-tagline">The most bioactive B5 form — essential for energy metabolism</div>
+          <div class="ing-desc">Pantethine is the most active form of Vitamin B5 and a direct precursor to Coenzyme A — essential for fatty acid oxidation and energy production. A meta-analysis of 4 clinical trials confirmed significant reductions in cholesterol and triglycerides.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">450–900 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Mantle D et al. J Mitochondria Nutraceuticals Innov 2016. Zozina VI et al. Front Pharmacol 2018;9:587. PMID: 29950994</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Lanhers C et al. Eur J Sport Sci 2017;17(7):821-836. PMID: 27328852. DOI: 10.1080/17461391.2017.1321518</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Yoshino M et al. Science 2021;372(6547):1224-1229. PMID: 34112658. DOI: 10.1126/science.abe9985</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Martens CR et al. Nat Commun 2018;9(1):1286. PMID: 29599478. DOI: 10.1038/s41467-018-03421-7</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Forsyth LM et al. Ann Allergy Asthma Immunol 1999;82(2):185-191. PMID: 10071523. DOI: 10.1016/S1081-1206(10)62595-1</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Chen S et al. J Altern Complement Med 2010;16(5):585-590. PMID: 20504360. DOI: 10.1089/acm.2009.0226</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Allen LH. Am J Clin Nutr 2009;89(2):693S-696S. PMID: 19116325. DOI: 10.3945/ajcn.2008.26947B</div>
+      <div class="ref-item"><span class="ref-num">8.</span>Stough C et al. Hum Psychopharmacol 2011;26(4-5):338-347. PMID: 21688245. DOI: 10.1002/hup.1220</div>
+      <div class="ref-item"><span class="ref-num">9.</span>Evans M et al. Vasc Health Risk Manag 2014;10:89-100. PMID: 24600231. DOI: 10.2147/VHRM.S57116</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-hormone">
+  <div class="panel-hdr">
+    <div class="panel-left">
+      <div class="panel-icon"></div>
+      <div class="panel-title">Hormonal Balance</div>
+      <div class="panel-desc">Addressing estrogen and testosterone balance, and activating cellular renewal pathways for long-term vitality.</div>
+    </div>
+    <div class="panel-pill">8 ingredients</div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Hormone Modulation</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-DIM--Diindolylmethane-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?dim,nature,plant,herb" alt="DIM (Diindolylmethane)" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">DIM</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">DIM (Diindolylmethane)</div>
+          <div class="ing-tagline">Guides estrogen down the healthier metabolic pathway</div>
+          <div class="ing-desc">DIM, found in cruciferous vegetables, shifts estrogen metabolism toward the protective 2-OH pathway. This makes it valuable for women with PMS, hormonal acne, or perimenopausal symptoms — it doesn't change estrogen levels, it improves how estrogen is processed.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Avoid if you have hormone-sensitive cancer (e.g. ER-positive breast cancer) or are on hormone therapy (tamoxifen, letrozole). Consult your doctor if you take thyroid medication.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">100–200 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Maca-0-6-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?maca,nature,plant,herb" alt="Maca 0.6%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Maca</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Maca 0.6%</div>
+          <div class="ing-tagline">Peruvian superfood for hormonal balance and vitality</div>
+          <div class="ing-desc">Maca works on the hypothalamic-pituitary-gonadal axis, improving how your body regulates its own hormones rather than directly altering hormone levels. Clinical trials confirm it improves sexual function, reduces menopausal symptoms in women, and increases libido in men.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">1,500–3,000 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Eurycoma-Longifolia-20-1">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?eurycoma,nature,plant,herb" alt="Eurycoma Longifolia 20:1" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Eurycoma</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Eurycoma Longifolia 20:1</div>
+          <div class="ing-tagline">Clinically proven to raise free testosterone in men</div>
+          <div class="ing-desc">Tongkat Ali inhibits SHBG — a protein that binds testosterone and renders it inactive. By reducing SHBG, more testosterone becomes free and usable. A clinical trial in hypogonadal men found it restored both total and free testosterone to normal ranges within 12 weeks.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">200–400 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Shilajit-50-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?shilajit,nature,plant,herb" alt="Shilajit 50%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Shilajit</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Shilajit 50%</div>
+          <div class="ing-tagline">Ancient mineral resin that supports testosterone and cellular energy</div>
+          <div class="ing-desc">Shilajit is rich in fulvic acid and minerals. A clinical trial found it raised total testosterone by 23.5% and free testosterone by 19.1% over 90 days. It also increases CoQ10 levels in mitochondria for enhanced cellular energy.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Soy-Isoflavones-40-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?soy,nature,plant,herb" alt="Soy Isoflavones 40%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Soy</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Soy Isoflavones 40%</div>
+          <div class="ing-tagline">Plant estrogens that ease menopausal symptoms naturally</div>
+          <div class="ing-desc">Soy isoflavones (genistein and daidzein) are phytoestrogens that gently bind estrogen receptors. A meta-analysis of 17 clinical trials found they significantly reduced hot flash frequency and severity in menopausal women.</div>
+          <div class="ing-caution"><span class="caution-icon"></span><span>Avoid if you have hormone-sensitive cancer (e.g. ER-positive breast cancer, uterine cancer). Consult your doctor if you take thyroid medication.</span></div>
+          <div class="ing-foot">
+            <span class="ing-dose">40–80 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aspect-group">
+    <div class="asp-label">Longevity & Anti-Aging</div>
+    <div class="ing-grid">
+      <div class="ing-card" id="card-Resveratrol-50-">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?resveratrol,nature,plant,herb" alt="Resveratrol 50%" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Resveratrol</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Resveratrol 50%</div>
+          <div class="ing-tagline">Activates the longevity genes linked to red wine's benefits</div>
+          <div class="ing-desc">Resveratrol activates SIRT1 — a longevity gene governing DNA repair, inflammation, and metabolic efficiency — and also activates AMPK, the same pathway as berberine and metformin. Clinical trials confirm improvements in blood sugar, cholesterol, and arterial function.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">150–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-NMN">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?nmn,nature,plant,herb" alt="NMN" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">NMN</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">NMN</div>
+          <div class="ing-tagline">Restores cellular energy levels that decline significantly with age</div>
+          <div class="ing-desc">NAD+ is required by every cell to produce energy — and levels drop up to 50% between ages 40 and 60. NMN is the most efficient precursor for restoring NAD+. Higher NAD+ activates sirtuins, proteins that govern cellular repair and biological aging processes.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">250–500 mg daily</span>
+            </div>
+        </div>
+      </div>
+      <div class="ing-card" id="card-Spermidine-3HCl">
+        <div class="ing-photo">
+          <img src="https://source.unsplash.com/random/400x200/?spermidine,nature,plant,herb" alt="Spermidine 3HCl" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+          <div class="fallback" style="display:none">
+            <div class="fallback-icon"></div>
+            <div class="fallback-label">Spermidine</div>
+          </div>
+        </div>
+        <div class="ing-body">
+          <div class="ing-name">Spermidine 3HCl</div>
+          <div class="ing-tagline">Triggers deep cellular self-renewal that declines with age</div>
+          <div class="ing-desc">Spermidine induces autophagy — the cellular process that identifies and recycles damaged components. Autophagy naturally declines with age and is now considered a hallmark of biological aging. A large observational study linked higher spermidine intake to significantly lower all-cause mortality.</div>
+          
+          <div class="ing-foot">
+            <span class="ing-dose">1–5 mg daily</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-block">
+    <div class="refs-trigger" onclick="toggleRefs(this)">
+      <div class="refs-trigger-left">
+        <h4>Scientific References</h4>
+        <p>Peer-reviewed studies supporting the ingredients above</p>
+      </div>
+      <span class="refs-chevron">&#9660;</span>
+    </div>
+    <div class="refs-content">
+      <div class="ref-item"><span class="ref-num">1.</span>Thomson CA et al. Breast Cancer Res Treat 2017;165(1):97-107. PMID: 28577051</div>
+      <div class="ref-item"><span class="ref-num">2.</span>Gonzales GF et al. Climacteric 2012;15(4):335-340. PMID: 22428137. Brooks NA et al. Andrologia 2008;40(4):247-251. PMID: 18652862</div>
+      <div class="ref-item"><span class="ref-num">3.</span>Tambi MI et al. Andrologia 2012;44(Suppl 1):226-230. PMID: 21671978. DOI: 10.1111/j.1439-0272.2011.01168.x</div>
+      <div class="ref-item"><span class="ref-num">4.</span>Pandit S et al. Andrologia 2016;48(5):570-575. PMID: 26395129. DOI: 10.1111/and.12482</div>
+      <div class="ref-item"><span class="ref-num">5.</span>Taku K et al. Menopause 2012;19(7):776-790. PMID: 22433977. DOI: 10.1097/gme.0b013e3182410159</div>
+      <div class="ref-item"><span class="ref-num">6.</span>Liu Y et al. Am J Clin Nutr 2014;99(6):1514-1521. PMID: 24695890</div>
+      <div class="ref-item"><span class="ref-num">7.</span>Yoshino M et al. Science 2021;372(6547):1224-1229. PMID: 34112658</div>
+      <div class="ref-item"><span class="ref-num">8.</span>Wirth M et al. GeroScience 2021;43(2):833-843. PMID: 33377449. DOI: 10.1007/s11357-020-00310-8</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /panels -->
+</section>
+
+<footer class="site-footer">
+  <p><strong>A note on evidence:</strong> All ingredients are chosen from peer-reviewed clinical research. We never claim any ingredient treats or cures disease. Every NutriLab formula is reviewed by a licensed pharmacist at CompoundIt Pharmacy, Aurora ON, before preparation — in compliance with Health Canada's Natural Health Products Regulations.</p>
+</footer>
+</div>
+
+<!-- ===== AI CHAT ===== -->
+<div id="chat-bubble" onclick="toggleChat()" style="
+  position:fixed; bottom:24px; right:24px; z-index:999;
+  width:56px; height:56px; border-radius:50%;
+  background:var(--moss); color:white;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; box-shadow:0 4px 20px rgba(157,165,123,0.4);
+  transition:transform 0.2s;
+" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+  <svg id="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  <svg id="chat-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+</div>
+
+<div id="chat-window" style="
+  position:fixed; bottom:92px; right:24px; z-index:998;
+  width:360px; height:520px;
+  background:white; border-radius:20px;
+  border:1px solid var(--border);
+  box-shadow:0 12px 48px rgba(61,43,31,0.15);
+  display:none; flex-direction:column; overflow:hidden;
+">
+  <!-- Header -->
+  <div style="background:var(--bark); padding:1.2rem 1.4rem; display:flex; align-items:center; gap:12px;">
+    <div style="width:38px;height:38px;border-radius:50%;background:var(--moss);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+    <div>
+      <div style="font-weight:500;font-size:0.95rem;color:white;">NutriLab Assistant</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:5px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#6fcf6f;display:inline-block;"></span>
+        Online · Powered by AI
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div id="chat-messages" style="flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:0.8rem;">
+    <div class="msg-ai">
+      Hi! I'm your NutriLab wellness advisor. I can help you find the right supplements for your health goals, answer questions about our ingredients, or explain how our formulas work. What can I help you with today?
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div style="padding:0.9rem;border-top:1px solid var(--border);display:flex;gap:8px;background:var(--cream);">
+    <input id="chat-input" type="text" placeholder="Ask me anything about supplements..."
+      style="flex:1;padding:0.65rem 1rem;border:1.5px solid var(--border);border-radius:100px;
+      font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text);
+      background:white;outline:none;"
+      onkeydown="if(event.key==='Enter') sendChat()"
+      onfocus="this.style.borderColor='var(--moss)'"
+      onblur="this.style.borderColor='var(--border)'">
+    <button onclick="sendChat()" style="
+      width:38px;height:38px;border-radius:50%;background:var(--moss);
+      border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;transition:background 0.2s;"
+      onmouseover="this.style.background='var(--moss-light)'"
+      onmouseout="this.style.background='var(--moss)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </button>
+  </div>
+</div>
+
+<script src="/js/ingredients.js"></script>
+<script src="/js/chat.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/menu.js"></script>
+</body>
+</html>
